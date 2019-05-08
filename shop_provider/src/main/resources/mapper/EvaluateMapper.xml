@@ -7,20 +7,22 @@
         select eva_id as evaId,com_id as comId,user_id as userId,
         eva_content as evaContent,eva_time as evaTime,eva_level as evaLevel  from t_evaluate
     </select>
-   <!-- <select id="queryEvaluateList1" resultType="com.mr.pojo.Evaluate">
+    <select id="selectl" resultType="com.mr.pojo.Evaluate">
         select
-	w.eva_id as evaId,
-	s.com_id as comId,
-	w.eva_content as evaContent,
-	s.com_name as comName,
-	s.com_pack as comPack,
-	s.com_type as comType,
-	w.eva_time as evaTime
-from
-	t_evaluate as w,
-	t_commodity as s
-where
-	w.eva_id=w.eva_id and
-	s.com_id=w.eva_id
-    </select>-->
+        w.eva_id,
+        s.com_id,
+        w.eva_content,
+        s.com_name,
+        s.com_pack,
+        s.com_type,
+        w.eva_time
+        from
+        t_evaluate as w,
+        t_commodity as s
+        where
+        w.eva_id=w.eva_id and
+        s.com_id=w.eva_id
+    </select>
+
+
 </mapper>
