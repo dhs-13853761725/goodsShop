@@ -33,4 +33,14 @@ public class EvaluateServiceImpl implements EvaluateService {
         PageInfo<Evaluate> pageInfo = new PageInfo<Evaluate>(list);
         return pageInfo;
     }
+
+    @Override
+    public List selectl() {
+        return evaluateMapper.selectl();
+    }
+
+    @Override
+    public List selectddd() {
+        return evaluateMapper.selectddd();
+    }
 }
