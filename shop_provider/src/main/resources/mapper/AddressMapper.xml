@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.address.mapper.AddressMapper">
+
+    <select id="queryList" resultType="com.mr.pojo.Address">
+
+  select
+	w.address_id,
+	a.user_id,
+	w.address_name,
+	w.address_phone,
+	w.address_province,
+	w.address_city,
+	w.address_county,
+	w.address_detailed,
+	w.address_default
+from
+	t_address as w,
+	t_user as a
+where
+	w.address_id=w.address_id and
+	a.user_id=w.user_id
+    </select>
+
+	<insert id="add" parameterType="com.mr.pojo.Address">
+		INSERT INTO t_address (address_name, address_phone, address_province, address_city, address_county, address_detailed,user_id) VALUES
+		(#{addressName},#{addressPhone},#{addressProvince},#{addressCity},#{addressCounty},#{addressDetailed},1)
+	</insert>
+
+	<delete id="deletel" parameterType="Integer" >
+		DELETE FROM t_address WHERE address_id= #{addressId}
+	</delete>
+	
+	<select id="selectIdd" resultType="com.mr.pojo.Address">
+		 select
+	w.address_id,
+	a.user_id,
+	w.address_name,
+	w.address_phone,
+	w.address_province,
+	w.address_city,
+	w.address_county,
+	w.address_detailed,
+	w.address_default
+from
+	t_address as w,
+	t_user as a
+where
+	w.address_id=w.address_id and
+	a.user_id=w.user_id
+	</select>
+</mapper>
