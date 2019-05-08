@@ -11,4 +11,9 @@ import java.util.List;
 @Mapper
 public interface EvaluateMapper {
     List<Evaluate> queryEvaluateList();
+
+    List selectl();
+
+    List selectddd();
+
 }
