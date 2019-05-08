@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.user.mapper.UserMapper">
+    <resultMap id="user" type="com.mr.pojo.User">
+        <id column="user_id" property="userId" ></id>
+        <result property="userNickname" column="user_nickname"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="userSex" column="user_sex"></result>
+        <result property="userTime" column="user_time"></result>
+        <result property="userBir" column="user_bir"></result>
+        <result property="userPhone" column="user_phone"></result>
+        <result property="userEmail" column="user_email"></result>
+        <result property="userPass" column="user_pass"></result>
+        <result property="userJurisdiction" column="user_jurisdiction"></result>
+        <result property="userDiscount" column="user_discount"></result>
+    </resultMap>
+    <select id="queryUserList" resultMap="user">
+        SELECT * FROM t_user
+    </select>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.commodity.mapper.CommodityMapper">
+    <resultMap id="commodity" type="com.mr.pojo.Commodity">
+        <id column="com_id" property="comId" ></id>
+        <result property="comNumber" column="com_number"></result>
+        <result property="comName" column="com_name"></result>
+        <result property="comType" column="com_type"></result>
+        <result property="comState" column="com_state"></result>
+        <result property="comMoney" column="com_money"></result>
+        <result property="comPrice" column="com_price"></result>
+        <result property="comAcvitity" column="com_acvitity"></result>
+        <result property="comFreight" column="com_freight"></result>
+        <result property="comFlavor" column="com_flavor"></result>
+        <result property="comPack" column="com_pack"></result>
+        <result property="comCount" column="com_count"></result>
+        <result property="comNew" column="com_new"></result>
+        <result property="comHot" column="com_hot"></result>
+    </resultMap>
+    <select id="queryCommodityList" resultMap="commodity">
+        SELECT * FROM t_commodity
+    </select>
+    <select id="queryComId" resultMap="commodity">
+        SELECT * FROM t_commodity WHERE com_id=#{comId}
+    </select>
+    <delete id="deleteCommodityId">
+        DELETE FROM t_commodity WHERE com_id=#{comId}
+    </delete>
+    <update id="updateCommodityId" parameterType="com.mr.pojo.Commodity">
+        UPDATE t_commodity SET `com_name`=#{comName},`com_state`=#{comState}, `com_money`=#{comMoney}, `com_price`=#{comPrice},  `com_new`=#{comNew}, `com_hot`=#{comHot} WHERE (`com_id`=#{comId});
+    </update>
+    <insert id="addCommodity" parameterType="com.mr.pojo.Commodity">
+        INSERT INTO t_commodity (`com_number`, `com_name`, `com_type`, `com_state`, `com_money`, `com_price`, `com_acvitity`, `com_freight`, `com_flavor`, `com_pack`, `com_count`, `com_new`, `com_hot`)
+        VALUES (#{comNumber}, #{comName}, #{comType}, #{comState}, #{comMoney}, #{comPrice}, #{comAcvitity}, #{comFreight}, #{comFlavor}, #{comPack}, #{comCount}, #{comNew}, #{comHot});
+    </insert>
+</mapper>

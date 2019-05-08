@@ -1,0 +1,15 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: shop_consumer_feign
+  datasource:
+      username: mr_1808
+      password: 1
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/mr_1809_05?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+      type: com.alibaba.druid.pool.DruidDataSource
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

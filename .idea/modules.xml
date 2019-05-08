@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/shop.iml" filepath="$PROJECT_DIR$/.idea/shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop_consumer_feign/shop_consumer_feign.iml" filepath="$PROJECT_DIR$/shop_consumer_feign/shop_consumer_feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop_eureka/shop_eureka.iml" filepath="$PROJECT_DIR$/shop_eureka/shop_eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop_pojo/shop_pojo.iml" filepath="$PROJECT_DIR$/shop_pojo/shop_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop_provider/shop_provider.iml" filepath="$PROJECT_DIR$/shop_provider/shop_provider.iml" />
+    </modules>
+  </component>
+</project>

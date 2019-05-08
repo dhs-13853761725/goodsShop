@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.member.mapper.MemberMapper">
+    <resultMap id="address" type="com.mr.pojo.Address">
+        <id column="address_id" property="addressId" ></id>
+        <result property="userId" column="user_id"></result>
+        <result property="addressName" column="address_name"></result>
+        <result property="addressPhone" column="address_phone"></result>
+        <result property="addressDetailed" column="address_detailed"></result>
+        <result property="addressCity" column="address_city"></result>
+        <result property="addressDefault" column="address_default"></result>
+    </resultMap>
+    <select id="queryAddressList" resultMap="address">
+        SELECT * FROM t_address
+    </select>
+</mapper>
