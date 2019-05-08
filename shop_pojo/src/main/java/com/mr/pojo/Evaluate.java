@@ -1,10 +1,9 @@
 package com.mr.pojo;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by shun on 2019/5/8.
+ * Created by wugua on 2019/5/6.
  */
 public class Evaluate {
 
@@ -32,7 +31,10 @@ public class Evaluate {
 
     private Integer evaState;//状态
 
-    private Date evaTime;
+    //@DateTimeFormat//(pattern = "yyyy-MM-dd")
+    private Date evaTime;//时间
+
+    private Integer evaAnonymous;//匿名
 
     @Override
     public String toString() {
@@ -50,21 +52,28 @@ public class Evaluate {
                 ", evaLevel=" + evaLevel +
                 ", evaState=" + evaState +
                 ", evaTime=" + evaTime +
+                ", evaAnonymous=" + evaAnonymous +
                 '}';
     }
-public String getEvaTimes(){
-        if(evaTime != null){
-            return new SimpleDateFormat("yyyy-MM-dd").format(evaTime);
-        }
-        return "";
-}
 
-    public Date getEvaTime() {
-        return evaTime;
+    public Evaluate() {
     }
 
-    public void setEvaTime(Date evaTime) {
+    public Evaluate(Integer evaId, Integer userId, String userName, Integer comId, String comName, Integer comType, Integer comPack, Double comMoney, Integer comCount, String evaContent, Integer evaLevel, Integer evaState, Date evaTime, Integer evaAnonymous) {
+        this.evaId = evaId;
+        this.userId = userId;
+        this.userName = userName;
+        this.comId = comId;
+        this.comName = comName;
+        this.comType = comType;
+        this.comPack = comPack;
+        this.comMoney = comMoney;
+        this.comCount = comCount;
+        this.evaContent = evaContent;
+        this.evaLevel = evaLevel;
+        this.evaState = evaState;
         this.evaTime = evaTime;
+        this.evaAnonymous = evaAnonymous;
     }
 
     public Integer getEvaId() {
@@ -163,23 +172,19 @@ public String getEvaTimes(){
         this.evaState = evaState;
     }
 
-    public Evaluate() {
+    public Date getEvaTime() {
+        return evaTime;
     }
 
-    public Evaluate(Integer evaId, Integer userId, String userName, Integer comId, String comName, Integer comType, Integer comPack, Double comMoney, Integer comCount, String evaContent, Integer evaLevel, Integer evaState,Date evaTime) {
-        this.evaId = evaId;
-        this.userId = userId;
-        this.userName = userName;
-        this.comId = comId;
-        this.comName = comName;
-        this.comType = comType;
-        this.comPack = comPack;
-        this.comMoney = comMoney;
-        this.comCount = comCount;
-        this.evaContent = evaContent;
-        this.evaLevel = evaLevel;
-        this.evaState = evaState;
+    public void setEvaTime(Date evaTime) {
         this.evaTime = evaTime;
     }
 
+    public Integer getEvaAnonymous() {
+        return evaAnonymous;
+    }
+
+    public void setEvaAnonymous(Integer evaAnonymous) {
+        this.evaAnonymous = evaAnonymous;
+    }
 }
