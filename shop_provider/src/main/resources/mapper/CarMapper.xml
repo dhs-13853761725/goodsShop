@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.shopcart.mapper.CarMapper">
+    
+    <select id="queryListAll" resultType="com.mr.shopcart.pojo.ResponCar" parameterType="Integer">
+        select
+         u.*,
+         d.*,
+         s.*,
+				 c.*
+      from
+         t_discount d,
+         t_user u,
+         t_shopcar s,
+				 t_commodity c
+      where
+            u.user_id = s.user_id
+				AND
+			d.yh_id = u.user_discount
+      and
+        u.user_id = #{userId}
+			and
+				s.car_content = c.com_id
+    </select>
+
+
+
+    <select id="goodsListAll" resultType="com.mr.pojo.Commodity">
+      select * from t_commodity
+    </select>
+
+</mapper>
