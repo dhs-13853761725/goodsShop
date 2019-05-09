@@ -24,7 +24,7 @@ public class RedisConfiguration {
 
     @Bean
     public KeyListener keyListener(){
-        System.err.println("redis 过期监听已启动》》》》》》》》》》》");
+        System.err.println("redis 过期监听已启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》");
         return new KeyListener(this.redisMessageListenerContainer());
     }
 

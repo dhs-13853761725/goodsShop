@@ -251,7 +251,7 @@
 						<div class="bundle  bundle-last " name = "caid">
 							<div class="bundle-hd">
 								<div class="bd-promos">
-									<div class="bd-has-promo">已享优惠:<span class="bd-has-promo-content">省￥${item.yhPrice!}</span>&nbsp;&nbsp;</div>
+									<div class="bd-has-promo">已享优惠:<span class="bd-has-promo-content">省￥${item.comYh!}</span>&nbsp;&nbsp;</div>
 									<div class="act-promo">
 										<a href="#" target="_blank">走过路过不要错过<span class="gt">&gt;&gt;</span></a>
 									</div>

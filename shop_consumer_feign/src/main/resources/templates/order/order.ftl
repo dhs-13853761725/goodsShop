@@ -242,7 +242,10 @@
                                                                 <div class="move-right">
                                                                     <li class="td td-change">
                                                                         <div class="am-btn am-btn-danger anniu">
-                                                                            提醒发货</div>
+                                                                        	<a href="javascript:fahuo(${li.userId},'${li.orUuid}')">
+																				提醒发货
+																			</a>
+																		</div>
                                                                     </li>
                                                                 </div>
 															<#elseif li.orState == 3>
@@ -504,7 +507,10 @@
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	提醒发货</div>
+                                                                    <a href="javascript:fahuo(${li.userId},'${li.orUuid}')">
+                                                                        提醒发货
+                                                                    </a>
+																</div>
 															</li>
 														</div>
 													</div>
@@ -840,6 +846,24 @@
 		</div>
 
 	<script>
+
+		function fahuo(userId,orUuid) {
+
+            $.ajax({
+				type:'get',
+				url:'mailShipment',
+				data:{userId:userId,orUuid:orUuid},
+				success:function () {
+					alert("已成功提醒商家");
+                },
+				error:function () {
+					alert("系统异常，请稍后重试！！");
+                }
+
+			});
+
+
+        }
 
 		//一键支付
 		function zhifu(id) {

@@ -1,6 +1,7 @@
 package com.mr.shopcart.pojo;
 
 
+import java.text.DecimalFormat;
 
 /**
  * Created by 1115393087 on 2019/4/29.
@@ -64,8 +65,15 @@ public class ResponCar {
 
 
 
-    //现价就是原价减去优惠价格
-
+    //优惠价格
+    public String getComYh(){
+        if(comPrice == null && comMoney == null){
+            return "";
+        }
+        DecimalFormat df = new DecimalFormat("#.00");
+        String str = df.format(comPrice - comMoney);
+        return  str;
+    }
 
     //总价格
     public String getCarZong12(){

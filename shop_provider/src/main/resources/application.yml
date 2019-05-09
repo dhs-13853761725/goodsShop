@@ -16,17 +16,17 @@ spring:
     password: guest
     port: 5672
   datasource:
-    username: mr_1808
+    username: root
     password: 1
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+    url: jdbc:mysql://192.168.43.190:3306/shop?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT
     type: com.alibaba.druid.pool.DruidDataSource
   devtools:
     remote:
       restart:
         enabled: true
   redis:
-    host: 127.0.0.1
+    host: 192.168.43.190
     port: 6379
     password: 123
     jedis:
@@ -40,9 +40,9 @@ spring:
   data:
     mongodb:
       database: mr
-      uri: mongodb://127.0.0.1:27017
+      uri: mongodb://192.168.43.190:27017
     solr:
-      host: http://127.0.0.1:8080/solr/solr
+      host: http://192.168.43.190:8080/solr/solr
 
 server:
   port: 8763

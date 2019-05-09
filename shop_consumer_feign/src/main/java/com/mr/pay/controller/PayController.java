@@ -12,6 +12,8 @@ import com.mr.pojo.*;
 import com.mr.shopcart.pojo.ResponCar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -147,7 +149,7 @@ public class PayController {
         }
         //生成订单
         redisTemplate.opsForValue().set("q"+out_trade_no,"qwew");
-        redisTemplate.expire("q"+out_trade_no,60, TimeUnit.SECONDS);
+        redisTemplate.expire("q"+out_trade_no,300, TimeUnit.SECONDS);
 
         System.err.println("已生成订单 订单号为:{"+order.getOrUuid()+"}");
         String body = "";//out_trade_no
@@ -324,6 +326,7 @@ public class PayController {
     }
 
 
+    //打开物流页面
     @RequestMapping("logisticsMain")
     public ModelAndView logisticsMain(OrderVo order){
         ModelAndView mo = new ModelAndView();
@@ -331,6 +334,12 @@ public class PayController {
         return mo;
     }
 
+    //提醒发货
+    @RequestMapping("mailShipment")
+    public void mailShipment(String userId,String orUuid){
+        redisTemplate.opsForValue().set(userId+","+orUuid,"qwew");
+        redisTemplate.expire(userId+","+orUuid,2, TimeUnit.SECONDS);
+    }
 
 
 }
