@@ -35,4 +35,54 @@
         INSERT INTO t_commodity (`com_number`, `com_name`, `com_type`, `com_state`, `com_money`, `com_price`, `com_acvitity`, `com_freight`, `com_flavor`, `com_pack`, `com_count`, `com_new`, `com_hot`)
         VALUES (#{comNumber}, #{comName}, #{comType}, #{comState}, #{comMoney}, #{comPrice}, #{comAcvitity}, #{comFreight}, #{comFlavor}, #{comPack}, #{comCount}, #{comNew}, #{comHot});
     </insert>
+    <select id="selectByCommodityId" parameterType="java.lang.Integer" resultType="com.mr.pojo.Commodity">
+        SELECT com.com_id as comId,
+        com.com_name as comName,
+        com_number as comNumber,
+        com_type as comType,
+        com_state as comState,
+        com_acvitity as comAcvitity,
+        com_freight as comFreight,
+        com_flavor as comFlavor,
+        com_pack as comPack,
+        com_count as comCount,
+        com_price as comPrice,
+        com_money as comMoney,
+        com_monthsales as comMonthsales,
+        com_totalevaluate as comTotalevaluate,
+        com_totalsales as comTotalsales
+        FROM t_commodity as com,t_sale as sa
+        <where>
+            com.com_id=sa.com_id AND com.com_id = #{comId}
+        </where>
+    </select>
+
+    <select id="selectByCommodityName" parameterType="java.lang.String" resultType="com.mr.pojo.Commodity">
+        select com.*,sa.com_monthsales as comMonthsales,sa.com_totalevaluate as comTotalevaluate,sa.com_totalsales as comTotalsales from t_commodity as com,t_sale as sa where com.com_id=sa.com_id and com.com_name like "%"#{comName}"%"
+    </select>
+
+    <select id="queryCommodityList1" resultType="com.mr.pojo.Commodity" parameterType="com.mr.pojo.Commodity">
+        SELECT com.com_id as comId,
+        com.com_name as comName,
+        com_number as comNumber,
+        com_type as comType,
+        com_state as comState,
+        com_acvitity as comAcvitity,
+        com_freight as comFreight,
+        com_flavor as comFlavor,
+        com_pack as comPack,
+        com_count as comCount,
+        com_price as comPrice,
+        com_money as comMoney,
+        com_monthsales as comMonthsales,
+        com_totalevaluate as comTotalevaluate,
+        com_totalsales as comTotalsales
+        FROM t_commodity as com,t_sale as sa
+        <where>
+            com.com_id=sa.com_id
+            <if test="comName!=null and comName!=''">
+                AND com.com_name LIKE <trim>"%"#{comName}"%"</trim>
+            </if>
+        </where>
+    </select>
 </mapper>
