@@ -91,7 +91,7 @@
 																<div class="sort-side">
 																	<dl class="dl-sort">
 																		<dt><span title="蛋糕">蛋糕</span></dt>
-																		<dd><a title="蒸蛋糕" href="/member/searchPage"><span>蒸蛋糕</span></a></dd>
+																		<dd><a title="蒸蛋糕" href="/queryCommodityList"><span>蒸蛋糕</span></a></dd>
 																		<dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
 																		<dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
 																		<dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -739,7 +739,7 @@
 								<h4>开年福利篇</h4>
 							</div>
 							<div class="recommendationMain one">
-								<a href="introduction.html"><img src="images/tj.png "></img></a>
+								<a href="/selectByCommodityId?comId=1"><img src="images/tj.png "></img></a>
 							</div>
 						</div>						
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -2182,7 +2182,7 @@
 
 					</div>
 					<div id="shopCart " class="item ">
-						<a href="# ">
+						<a href="javascript:shopcartMain()">
 							<span class="message "></span>
 						</a>
 						<p>
@@ -2322,5 +2322,14 @@
 		<script type="text/javascript " src="basic/js/quick_links.js "></script>
 
 	</body>
-
+    <script>
+        function shopcartMain() {
+            var userId = 1;
+            if(userId != null) {
+                location.href = "/shopcartMain?userId="+userId;
+            }else{
+                alert("请先登录");
+            }
+        }
+    </script>
 </html>
