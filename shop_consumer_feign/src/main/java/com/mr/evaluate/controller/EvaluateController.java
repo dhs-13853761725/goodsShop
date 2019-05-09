@@ -49,26 +49,6 @@ public class EvaluateController {
      * 跳转页面
      * @return
      */
-    @RequestMapping("qqq")
-    public ModelAndView qqq(){
-        ModelAndView mm = new ModelAndView();
-        mm.setViewName("personal/personal");
-        return mm;
-    }
-    /**
-     * 跳转页面
-     * @return
-     */
-    @RequestMapping("dd")
-    public ModelAndView dd(){
-        ModelAndView mm = new ModelAndView();
-        mm.setViewName("evaluate/order");
-        return mm;
-    }
-    /**
-     * 跳转页面
-     * @return
-     */
     @RequestMapping("pp")
     public ModelAndView pp(){
         ModelAndView mm = new ModelAndView();
