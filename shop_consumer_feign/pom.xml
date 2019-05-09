@@ -20,6 +20,19 @@
 	</properties>
 
 	<dependencies>
+		<!-- json -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.56</version>
+		</dependency>
+
+		<!-- 支付 -->
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>3.3.49.ALL</version>
+		</dependency>
 		<dependency>
 			<groupId>com.mr</groupId>
 			<artifactId>shop_provider</artifactId>
