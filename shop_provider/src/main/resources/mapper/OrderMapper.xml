@@ -20,4 +20,23 @@
         select * from t_order where or_uuid = #{uuid}
     </select>
 
+    <select id="queryOrderList" resultType="com.mr.pojo.Order">
+    select
+	d.or_id,
+    z.pay_id,
+    u.user_id,
+d.or_uuid,
+	d.or_state,
+	d.or_price,
+	d.or_express,
+	z.pay_price,
+	z.pay_date
+from
+	t_order as d,
+	t_user as u,
+	t_alipay as z
+where
+	d.or_id=z.or_id and
+	u.user_id=d.user_id
+    </select>
 </mapper>
