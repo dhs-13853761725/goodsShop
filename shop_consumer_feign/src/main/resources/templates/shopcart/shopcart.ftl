@@ -470,7 +470,7 @@
 			        id = idd[i].getAttribute("value");
                     var count = $("#count"+id).val();
                     var zong = document.getElementById("zong"+id).innerHTML;
-                    if(count != 1 && count != 0){
+                    if(count != 0){
                         var countt =  count * zong;
                         if(po == null){
                             po = countt;
@@ -480,6 +480,7 @@
                     }
                 }
                 var pp = po.split(",");
+				//console.log(po.split(",")	);
 				//console.log(pp)
                 for(var i = 0;i<pp.length;i++){
                 	console.log(document.getElementById("jiesuan"+id).innerHTML= String(pp[i]));
