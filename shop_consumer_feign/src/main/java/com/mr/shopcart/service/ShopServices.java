@@ -19,4 +19,7 @@ public interface ShopServices {
 
     @RequestMapping(value = "/shopcartMain1",method = RequestMethod.GET)
     List shopcartMain1(@RequestBody ResponCar responCar);
+
+    @RequestMapping("insertCarShop1")
+    void insertCarShop(@RequestBody ResponCar car);
 }

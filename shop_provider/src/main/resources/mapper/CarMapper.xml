@@ -31,4 +31,8 @@
       select * from t_commodity
     </select>
 
+    <insert id="insertCarShop" parameterType="com.mr.shopcart.pojo.ResponCar">
+        INSERT INTO t_shopcar (`user_id`, `car_content`, `yh_id`, `car_count`, `car_color`, `car_pack`)
+         VALUES (#{userId}, #{carContent}, null, #{carCount}, #{comFlavor}, #{comPack});
+    </insert>
 </mapper>

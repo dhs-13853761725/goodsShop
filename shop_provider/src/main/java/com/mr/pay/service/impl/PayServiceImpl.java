@@ -86,4 +86,9 @@ public class PayServiceImpl implements PayService{
     public List seleByYh(ComUser com) {
         return payMapper.seleByYh(com);
     }
+
+    @Override
+    public void deleCarShopId(Integer carId) {
+        payMapper.deleCarShopId(carId);
+    }
 }

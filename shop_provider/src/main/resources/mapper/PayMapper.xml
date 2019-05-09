@@ -167,5 +167,8 @@
             and
 	        d.yh_desc = 1
     </select>
-    
+
+    <delete id="deleCarShopId" parameterType="Integer">
+        delete from t_shopcar WHERE car_id = #{carId}
+    </delete>
 </mapper>

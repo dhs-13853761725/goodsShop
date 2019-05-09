@@ -53,4 +53,7 @@ public interface PayMapper {
 
     //查询当前用户的订单
     List seleByYh(ComUser com);
+
+    //删除订单
+    void deleCarShopId(Integer carId);
 }

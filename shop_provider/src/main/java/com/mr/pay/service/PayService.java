@@ -38,4 +38,6 @@ public interface PayService {
     void updateAcceptKey(String key);
 
     List seleByYh(ComUser com);
+
+    void deleCarShopId(Integer carId);
 }

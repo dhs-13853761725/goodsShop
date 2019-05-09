@@ -1,6 +1,8 @@
 package com.mr.shopcart.service;
 
 
+import com.mr.shopcart.pojo.ResponCar;
+
 import java.util.List;
 
 /**
@@ -12,4 +14,6 @@ public interface CarService {
     List queryListAll(Integer userId);
 
     List goodsListAll();
+
+    void insertCarShop(ResponCar car);
 }

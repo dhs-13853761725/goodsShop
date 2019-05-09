@@ -55,5 +55,9 @@ public class CarController {
         return carList;
     }
 
+    @RequestMapping("insertCarShop1")
+    public void insertCarShop(@RequestBody ResponCar car){
+        carService.insertCarShop(car);
+    }
 
 }

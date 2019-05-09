@@ -82,6 +82,10 @@ public interface PayServiceFeign {
     @RequestMapping("seleByYh")
     List seleByYh(@RequestBody ComUser com);
 
+    //删除购物车
+    @RequestMapping("deleCarShopId")
+    void deleCarShopId(@RequestBody Integer carId);
+
 
     //List payComList(Integer userId, Integer carId);
 }

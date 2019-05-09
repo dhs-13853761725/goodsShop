@@ -96,4 +96,10 @@ public class PayController1 {
         return payService.seleByYh(com);
     }
 
+
+    @RequestMapping("deleCarShopId")
+    public void deleCarShopId(@RequestBody Integer carId){
+        payService.deleCarShopId(carId);
+    }
+
 }

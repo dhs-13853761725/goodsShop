@@ -19,6 +19,7 @@
 	<body>
 
 		<!--顶部导航条 -->
+				<input value="1" type="hidden" id = "userId"/>
 				<#include "/inclu/topLogo.ftl">
 
 			<!--悬浮搜索框-->
@@ -242,7 +243,7 @@
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
 											<input type="hidden" name = "carId" value="${item.carId!}"/>
-											<input class="check" id="jie${item.carId}" onclick="jie()" name="che"  value="${item.carId!}" type="checkbox">
+											<input class="check" id="jie${item.carId}" onclick="jie()" name="che${item.carId}"  value="${item.carId!}" type="checkbox">
 											<label for="J_CheckBox_170769542747"></label>
 										</div>
 									</li>
@@ -468,15 +469,19 @@
 
 
 			function thisHang() {
-
+				var carId = jie();
                 var idd = document.getElementsByName("carId");
                 for(var i =0;i<idd.length;i++){
                     var id = idd[i].getAttribute("value");
 
+                    //var carId = 5;
+
+                    var userId = $("#userId").val();
+
                     var a = $("#jie"+id).is(":checked");
                     var count = this.$("#count"+id).val();
                     if(a){
-                        location.href = "payMain?userId=1&carId=1&count="+count;
+                        location.href = "payMain?userId="+userId+"&carId="+carId+"&count="+count;
                     	return;
                     }
 				}
@@ -523,13 +528,16 @@
                     $("#J_Total").html('<em id="J_Total">'+ccount+'</em>');
 					return;
 				}
-
+				var idq = null;
 				var aop = null;
+			    var id = null;
                 var idd = document.getElementsByName("carId");
                 for(var i =0;i<idd.length;i++) {
                     var id = idd[i].getAttribute("value");
 					//判断是否要选中当前的商品
 					var a = $("#jie"+id).is(":checked");
+
+					idq = $("input[name='xuan'+id]:checked").val();
 					//如果选中  那么价格则展示在 总价格
 					if(a){
 						zong = document.getElementById("zong"+id).innerHTML;
@@ -546,6 +554,7 @@
 				}else{
                     $("#J_Total").html('<em id="J_Total">0.0</em>');
 				}
+				return idq;
 			}
 
 

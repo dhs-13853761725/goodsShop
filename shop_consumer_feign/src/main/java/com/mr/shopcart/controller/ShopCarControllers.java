@@ -29,5 +29,12 @@ public class ShopCarControllers {
     }
 
 
+    @RequestMapping("insertCarShop")
+    public int insertCarShop(ResponCar car){
+        shopService.insertCarShop(car);
+        return 0;
+    }
+
+
 
 }

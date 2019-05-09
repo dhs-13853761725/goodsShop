@@ -24,7 +24,7 @@
 </head>
 
 <body>
-
+    <input type="hidden" id="userId" value="1"/>
 <!--顶部导航条 -->
 <#include "/inclu/topLogo.ftl">
 
@@ -142,6 +142,7 @@
         </div>
 
         <div class="clearfixRight">
+            <input type="hidden" value="${commodity.comId}" id = "comId"/>
 
             <!--规格属性-->
             <!--名称-->
@@ -223,7 +224,7 @@
 
                                         <div class="theme-options">
                                             <div class="cart-title">口味</div>
-                                            <ul>
+                                            <ul id = "yangshi">
                                                 <li class="sku-line selected">原味<i></i></li>
                                                 <li class="sku-line">奶油<i></i></li>
                                                 <li class="sku-line">炭烧<i></i></li>
@@ -232,7 +233,7 @@
                                         </div>
                                         <div class="theme-options">
                                             <div class="cart-title">包装</div>
-                                            <ul>
+                                            <ul id = "pack12">
                                                 <li class="sku-line selected">手袋单人份<i></i></li>
                                                 <li class="sku-line">礼盒双人份<i></i></li>
                                                 <li class="sku-line">全家福礼包<i></i></li>
@@ -244,7 +245,7 @@
                         <input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
                         <input id="text_box" name="" type="text" value="1" style="width:30px;" />
                         <input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
-                        <span id="Stock" class="tb-hidden">库存<span class="stock">${commodity.comCount!}</span>件</span>
+                        <span id="Stock" class="tb-hidden">库存<span class="stock">${commodity.comCount!}</span>件</span><input id = "count1" type="hidden" value="${commodity.comCount!}"/>
                     </dd>
 
             </div>
@@ -306,7 +307,7 @@
     </li>
     <li>
         <div class="clearfix tb-btn tb-btn-basket theme-login">
-            <a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+            <a id="LikBasket" title="加入购物车" href="javascript:addCarShop()"><i></i>加入购物车</a>
         </div>
     </li>
     <li>
@@ -1307,6 +1308,80 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function yangshi() {
+        var wu = null;
+        var content = document.getElementById("yangshi");
+        var items = content.getElementsByTagName("li");
+        for(var i = 0;i<items.length;i++){
+            if(items[i].getAttribute("class").indexOf("selected") != -1){
+                if(items[i].innerText == "原味"){
+                    wu = 1;
+                }else if(items[i].innerText == "奶油"){
+                    wu = 2;
+                }else if(items[i].innerText == "炭烧"){
+                    wu = 3;
+                }else if(items[i].innerText == "咸香"){
+                    wu = 4;
+                }
+            }
+        }
+        console.log(wu);
+        return wu;
+    }
+
+    function pack1() {
+        var wu = null;
+        var content = document.getElementById("pack12");
+        var items = content.getElementsByTagName("li");
+        for(var i = 0;i<items.length;i++){
+            if(items[i].getAttribute("class").indexOf("selected") != -1){
+                if(items[i].innerText == "手袋单人份"){
+                    wu = 1;
+                }else if(items[i].innerText == "礼盒双人份"){
+                    wu = 2;
+                }else if(items[i].innerText == "全家福礼包"){
+                    wu = 3;
+                }
+            }
+        }
+        console.log(wu);
+        return wu;
+    }
+
+    function addCarShop() {
+        //商品数量
+        var comcount = $("#text_box").val();
+        //库存
+        var count = $("#count1").val();
+        if(Number(comcount) > Number(count)){
+            alert("商品库存不足，请从新选择！！");
+            return;
+        }
+        //用户id
+        var userId = $("#userId").val();
+        //商品id
+        var comId = $("#comId").val();
+        //商品样式
+        var yang = yangshi();
+        //商品包装
+        var pack = pack1();
+
+        $.ajax({
+            type:'get',
+            url:'insertCarShop',
+            data:{userId:userId,carContent:comId,carCount:comcount,comFlavor:yang,comPack:pack},
+            success:function (data) {
+                alert("即将跳转到购物车页面");
+                location.href = "/shopcartMain?userId="+userId;
+            }
+        });
+
+    }
+
+</script>
 
 </body>
 

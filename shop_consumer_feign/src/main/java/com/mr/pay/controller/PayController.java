@@ -100,6 +100,8 @@ public class PayController {
         mo.addObject("yhList",yhList);
         mo.addObject("o",addr);
         mo.addObject("userId",addr.getUserId());
+        mo.addObject("gwId",c.getCarId());
+        mo.addObject("comId",comId);
         mo.setViewName("/pay/pay");
         return mo;
     }
@@ -152,11 +154,17 @@ public class PayController {
         redisTemplate.expire("q"+out_trade_no,300, TimeUnit.SECONDS);
 
         System.err.println("已生成订单 订单号为:{"+order.getOrUuid()+"}");
-        String body = "";//out_trade_no
+
+        //删除购物车中的数据
+        if(order.getCarId() != null){
+            payServiceFeign.deleCarShopId(order.getCarId());
+            System.err.println("以删除购物车中{"+order.getCarId()+"}的数据");
+        }
+        String body = "";//order.toString();//out_trade_no
         request.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
                 + "\"total_amount\":\""+ total_amount +"\","
                 + "\"subject\":\""+ subject +"\","
-                //+ "\"body\":\""+ body +"\","
+                + "\"body\":\""+ body +"\","
                 + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 
         String form = "";
@@ -206,11 +214,14 @@ public class PayController {
             // 付款金额
             String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"), "UTF-8");
 
+            //String body1 = new String(request.getParameter("body").getBytes("ISO-8859-1"), "UTF-8");
+
 
 
             System.err.println("商户订单号="+out_trade_no);
             System.err.println("支付宝交易号="+trade_no);
             System.err.println("付款金额="+total_amount);
+            //System.err.println("购物车主键="+body1);
 
 
             //通过订单号  修改状态为支付成功

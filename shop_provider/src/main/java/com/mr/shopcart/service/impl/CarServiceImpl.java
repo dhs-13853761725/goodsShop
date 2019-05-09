@@ -27,4 +27,9 @@ public class CarServiceImpl implements CarService {
     public List goodsListAll() {
         return carMapper.goodsListAll();
     }
+
+    @Override
+    public void insertCarShop(ResponCar car) {
+        carMapper.insertCarShop(car);
+    }
 }

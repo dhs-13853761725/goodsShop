@@ -21,6 +21,10 @@
 
 	<body>
 
+		<input type="hidden" id = "userId" value="${userId!}"/>
+		<input type="hidden" id = "gwId" value="${gwId!}"/>
+		<input type="hidden" id = "comId" value="${comId!}"/>
+
 		<!--顶部导航条 -->
 		<div class="am-container header">
 			<ul class="message-l">
@@ -417,7 +421,8 @@
                         </div>
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
-                                <a href="javascript:zeng()" class="am-btn am-btn-danger">保存</a>
+                                <a href="javascript:
+                                ()" class="am-btn am-btn-danger">保存</a>
                                 <div class="am-btn am-btn-danger close">取消</div>
                             </div>
                         </div>
@@ -540,11 +545,17 @@
 				//进行付款
 				//支付金额
                 var orPrice = $("#jiesuan1").val();
+
+			    var userId = $("#userId").val();
+
+                var carId = $("#gwId").val();
+
+                var orComid = $("#comId").val();
                 //买家留言
                 var orContent = document.getElementById("liuyan").innerHTML;
                 //获取购买数量
 				var carCount = document.getElementById("carCount").innerText;
-				location.href = "alipay?userId=1&addressId=1&orComid=1&orPrice="+orPrice+"&orPostage=0&orContent="+orContent+"&orExpress=1&carCount="+carCount;
+				location.href = "alipay?userId="+userId+"&addressId=1&orComid="+orComid+"&orPrice="+orPrice+"&orPostage="+wu+"&orContent="+orContent+"&orExpress=1&carCount="+carCount+"&carId="+carId;
 			}else{
 			    alert("亲，请选择支付方式！");
 			}
