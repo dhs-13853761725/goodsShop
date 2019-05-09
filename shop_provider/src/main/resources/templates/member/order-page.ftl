@@ -10,13 +10,28 @@
 <table id="demo" lay-filter="test"></table>
 <!-- 字段判断 -->
 <script type="text/html" id="belongTpl">
-    {{#  if(d.userSex === 1){ }}
-    <span>男</span>
-    {{#  } else { }}
-    <span>女</span>
+    {{#  if(d.orState  === 1){ }}
+    <span>未支付</span>
+    {{#  } else if(d.orState  === 2) { }}
+    <span>支付成功</span>
+    {{#  } else if(d.orState  === 3) { }}
+    <span>订单已过期</span>
     {{#  } }}
 </script>
-
+<!-- 字段判断 -->
+<script type="text/html" id="belongTpl1">
+    {{#  if(d.orExpress  === 1){ }}
+    <span>圆通</span>
+    {{#  } else if(d.orExpress  === 2) { }}
+    <span>申通</span>
+    {{#  } else if(d.orExpress  === 3) { }}
+    <span>韵达</span>
+    {{#  } else if(d.orExpress  === 4) { }}
+    <span>中通</span>
+    {{#  } else if(d.orExpress  === 5) { }}
+    <span>顺丰</span>
+    {{#  } }}
+</script>
 <script>
 
     layui.use('table', function(){
@@ -28,22 +43,21 @@
             elem: '#demo'
             ,toolbar: '#toolbarDemo'
             ,height: 550
-            ,url:'/user/queryUserList' //数据接口
+            ,url:'/queryOrderList' //数据接口
             ,page: true //开启分页
             ,limits:[5,10,15,20,30]
             ,cols: [[ //表头
                 {field: 'orUuid', title: '订单编号', sort: true}
                 ,{field: 'userId', title: '用户ID', sort: true}
-                ,{field: 'userPhone', title: '订单状态', sort: true}
-                ,{field: 'userSex ', title: '订单金额', sort: true, templet: '#belongTpl'}
-                ,{field: 'userBirs', title: '支付金额', sort: true}
-                ,{field: 'userJurisdiction', title: '支付时间', sort: true}
-                ,{field: 'userTimes', title: '物流单号', sort: true}
-                ,{field: 'userTimes', title: '物流渠道', sort: true}
+                ,{field: 'orState', title: '订单状态', sort: true, templet: '#belongTpl'}
+                ,{field: 'orPrice', title: '订单金额', sort: true}
+                ,{field: 'payPrice', title: '支付金额', sort: true}
+                ,{field: 'payDates', title: '支付时间', sort: true}
+               /* ,{field: 'userTimes', title: '物流单号', sort: true}*/
+                ,{field: 'orExpress', title: '物流渠道', sort: true, templet: '#belongTpl1'}
                 ,{field: '', title: '操作', sort: true}
             ]],
         });
-
     });
 </script>
 
