@@ -99,6 +99,7 @@
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
 									<div class="comment-main">
+									<#list ll as item>
 										<div class="comment-list">
 											<ul class="item-list">
 												<div class="comment-top">
@@ -109,6 +110,7 @@
 														<td class="td-inner">商品</td>
 													</div>
 												</div>
+
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
@@ -116,7 +118,7 @@
 														</a>
 													</div>
 												</li>
-										<#list ll as item>
+
 												<li class="td td-comment">
 													<div class="item-title">
 														<div class="item-opinion">好评</div>
@@ -130,7 +132,7 @@
 													<div class="item-info">
 														<div>
 															<p class="info-little"><span>颜色：
-																<#if item.comType == 1>
+																<#if item.comFlavor == 1>
 																    红翡翠
 																</#if>
 																</span>
@@ -141,13 +143,14 @@
 																		盒装
 																	</#if>
 																</span> </p>
-															<p class="info-time">${item.evaTime}</p>
+															<p class="info-time">${item.evaTime!}</p>
 														</div>
 													</div>
 												</li>
-										</#list>
+
 											</ul>
 										</div>
+									</#list>
 									</div>
 								</div>
 								<div class="am-tab-panel am-fade" id="tab2">
@@ -238,7 +241,7 @@
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li><a href="dd">订单管理</a></li>
+							<li><a href="/orderMain?userId=1">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>
