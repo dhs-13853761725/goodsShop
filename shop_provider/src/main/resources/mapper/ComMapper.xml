@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.comment.mapper.ComMapper">
+
+
+    <select id="selectComment" parameterType="Integer" resultType="com.mr.pojo.CommHtml">
+        select
+                t.*,
+                c.*
+        from
+            t_order t,
+            t_commodity c
+        where
+            t.or_comid = c.com_id
+        and
+            t.or_id = #{orId}
+    </select>
+
+    <insert id="comInsert" parameterType="com.mr.pojo.CommHtml">
+        INSERT INTO t_evaluate (`user_id`, `com_id`, `eva_content`, `eva_level`, `eva_state`, `eva_time`, `eva_anonymous`)
+        VALUES
+         (#{userId}, #{comId}, #{evaContent}, #{evaLevel}, 1, #{evaTime}, NULL);
+    </insert>
+    
+    <update id="updateOrderState" parameterType="Integer">
+        update t_order set or_ifcomment = 2 where or_id = #{orId}
+    </update>
+
+</mapper>
