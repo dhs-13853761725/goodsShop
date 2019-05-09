@@ -1,5 +1,6 @@
 package com.mr.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,6 +20,7 @@ public class Evaluate {
 
     private Integer comType;//商
 
+    private Integer comFlavor;//颜色
     private Integer comPack;//包装
 
     private Double comMoney;// 单价
@@ -36,6 +38,13 @@ public class Evaluate {
 
     private Integer evaAnonymous;//匿名
 
+    public String getEvaTimes(){
+        if(evaTime != null){
+            return new SimpleDateFormat("yyyy-MM-dd").format(evaTime);
+        }
+        return "";
+    }
+
     @Override
     public String toString() {
         return "Evaluate{" +
@@ -45,6 +54,7 @@ public class Evaluate {
                 ", comId=" + comId +
                 ", comName='" + comName + '\'' +
                 ", comType=" + comType +
+                ", comFlavor=" + comFlavor +
                 ", comPack=" + comPack +
                 ", comMoney=" + comMoney +
                 ", comCount=" + comCount +
@@ -56,7 +66,34 @@ public class Evaluate {
                 '}';
     }
 
+    public Integer getComFlavor() {
+        return comFlavor;
+    }
+
+    public void setComFlavor(Integer comFlavor) {
+        this.comFlavor = comFlavor;
+    }
+
     public Evaluate() {
+    }
+
+    public Evaluate(Integer evaId, Integer userId, String userName, Integer comId, String comName, Integer comType, Integer comFlavor, Integer comPack, Double comMoney, Integer comCount, String evaContent, Integer evaLevel, Integer evaState, Date evaTime, Integer evaAnonymous) {
+
+        this.evaId = evaId;
+        this.userId = userId;
+        this.userName = userName;
+        this.comId = comId;
+        this.comName = comName;
+        this.comType = comType;
+        this.comFlavor = comFlavor;
+        this.comPack = comPack;
+        this.comMoney = comMoney;
+        this.comCount = comCount;
+        this.evaContent = evaContent;
+        this.evaLevel = evaLevel;
+        this.evaState = evaState;
+        this.evaTime = evaTime;
+        this.evaAnonymous = evaAnonymous;
     }
 
     public Evaluate(Integer evaId, Integer userId, String userName, Integer comId, String comName, Integer comType, Integer comPack, Double comMoney, Integer comCount, String evaContent, Integer evaLevel, Integer evaState, Date evaTime, Integer evaAnonymous) {
