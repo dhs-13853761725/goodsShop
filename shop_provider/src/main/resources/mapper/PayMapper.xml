@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.pay.mapper.PayMapper">
+
+    <select id="payAddrList" parameterType="Integer" resultType="com.mr.pojo.AddrUser">
+       select d.*,t.user_nickname from t_address d,t_user t where d.user_id = t.user_id and t.user_id = 1
+    </select>
+    
+    <select id="payComList"  resultType="com.mr.shopcart.pojo.ResponCar">
+           select
+         u.*,
+         d.*,
+         s.*,
+		 c.*
+      from
+         t_discount d,
+         t_user u,
+         t_shopcar s,
+		 t_commodity c
+      where
+        u.user_id = s.user_id
+				AND
+		d.yh_id = u.user_discount
+      and
+        u.user_id = #{userId}
+	  and
+		s.car_content = c.com_id
+	  AND
+        s.car_id = #{carId}
+    </select>
+
+
+    <select id="addrId1" parameterType="Integer" resultType="com.mr.pojo.AddrUser">
+        select d.*,t.user_nickname from t_address d,t_user t where d.user_id = t.user_id and t.user_id = #{userId} and address_default = 1
+    </select>
+
+
+    <select id="selectByAddrId" resultType="com.mr.pojo.AddrUser" parameterType="Integer">
+        select * from t_address where address_id = #{addrId}
+    </select>
+
+    <update id="updateCount" parameterType="com.mr.pojo.CarComId">
+        update t_shopcar set car_count = #{count} where car_id = #{carId}
+    </update>
+
+
+
+    <insert id="payOrderContent" parameterType="com.mr.pojo.PayOrder">
+        INSERT INTO t_alipay (`user_id`, `pay_uuid`, `pay_price`, `or_id`, `pay_date`)
+         VALUES (#{userId}, #{payUuid}, #{payPrice}, #{orId}, #{payDate});
+    </insert>
+
+
+
+    <select id="selectOrder" parameterType="Integer" resultType="com.mr.pojo.OrderVo">
+        select
+            r.*,
+            u.*,
+            c.*,
+            s.car_count
+        from
+            t_order r,
+            t_user u,
+            t_commodity c,
+            t_shopcar s
+
+        WHERE
+            r.user_id = u.user_id
+        and
+            r.or_comid = c.com_id
+        and
+            u.user_id = u.user_id
+        and
+            s.car_content = r.or_comid
+        and
+            r.user_id = #{userId}
+    </select>
+
+
+    <delete id="orderDele" parameterType="Integer">
+        delete from t_order where or_id = #{orId}
+    </delete>
+
+
+    <select id="selectUnpaid" parameterType="Integer" resultType="com.mr.pojo.OrderVo">
+         select
+            r.*,
+            u.*,
+            c.*,
+            s.car_count
+        from
+            t_order r,
+            t_user u,
+            t_commodity c,
+            t_shopcar s
+
+        WHERE
+            r.user_id = u.user_id
+        and
+            r.or_comid = c.com_id
+        and
+            u.user_id = u.user_id
+        and
+            s.car_content = r.or_comid
+        and
+            r.or_state = 1
+        and
+            r.user_id = #{userId}
+    </select>
+
+    <select id="selectSuccess" parameterType="Integer" resultType="com.mr.pojo.OrderVo">
+       select
+            r.*,
+            u.*,
+            c.*,
+            s.car_count
+        from
+            t_order r,
+            t_user u,
+            t_commodity c,
+            t_shopcar s
+
+        WHERE
+            r.user_id = u.user_id
+        and
+            r.or_comid = c.com_id
+        and
+            u.user_id = u.user_id
+        and
+            s.car_content = r.or_comid
+        and
+            r.or_state = 2
+        and
+            r.user_id = #{userId}
+    </select>
+
+    <update id="updateStateKey" parameterType="String">
+        update t_order set or_state = 3 where or_uuid = #{key}
+    </update>
+
+
+
+    <update id="updateAcceptKey" parameterType="String">
+        update t_order set or_accept = 2 where or_uuid = #{key}
+    </update>
+    
+    
+    <select id="seleByYh" parameterType="com.mr.pojo.ComUser" resultType="com.mr.pojo.YhVo">
+        SELECT
+            d.*,
+            'c.com_id',
+            u.user_id
+        from
+            t_discount d,
+            t_commodity c,
+            t_user u
+        where
+            d.com_id = c.com_id
+            and
+            u.yh_id = d.yh_id
+            and
+            u.user_id = #{userId}
+            and
+            d.com_id = #{comId}
+            and
+	        d.yh_desc = 1
+    </select>
+    
+</mapper>
