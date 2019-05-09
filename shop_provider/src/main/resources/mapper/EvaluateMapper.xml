@@ -14,7 +14,7 @@
         w.eva_content,
         s.com_name,
         s.com_pack,
-        s.com_type,
+        s.com_flavor,
         w.eva_time
         from
         t_evaluate as w,
