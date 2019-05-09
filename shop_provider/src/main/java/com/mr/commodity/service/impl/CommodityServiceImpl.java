@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.mr.commodity.mapper.CommodityMapper;
 import com.mr.commodity.service.CommodityService;
 import com.mr.pojo.Commodity;
-import com.mr.pojo.User;
 import com.mr.utils.Page;
 import com.mr.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +51,23 @@ public class CommodityServiceImpl implements CommodityService {
     @Override
     public void addCommodity(Commodity commodity) {
         commodityMapper.addCommodity(commodity);
+    }
+
+    @Override
+    public Commodity selectByCommodityId(String comId) {
+        return commodityMapper.selectByCommodityId(comId);
+    }
+
+    @Override
+    public List<Commodity> queryCommodityList1(Commodity commodity) {
+        List<Commodity> map = commodityMapper.queryCommodityList1(commodity);
+        return map;
+    }
+
+    @Override
+    public List<Commodity> solr(String comName) {
+        List<Commodity> commodities = commodityMapper.selectByCommodityName(comName);
+        return commodities;
+
     }
 }

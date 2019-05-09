@@ -2,6 +2,7 @@ package com.mr.commodity.mapper;
 
 import com.mr.pojo.Commodity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,4 +20,10 @@ public interface CommodityMapper {
     void updateCommodityId(Commodity commodity);
 
     void addCommodity(Commodity commodity);
+
+    List<Commodity> queryCommodityList1(Commodity commodity);
+
+    Commodity selectByCommodityId(String comId);
+
+    List<Commodity> selectByCommodityName(@Param("comName") String comName);
 }

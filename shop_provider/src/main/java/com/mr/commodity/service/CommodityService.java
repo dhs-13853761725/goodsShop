@@ -3,7 +3,8 @@ package com.mr.commodity.service;
 import com.github.pagehelper.PageInfo;
 import com.mr.pojo.Commodity;
 import com.mr.utils.Page;
-import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * Created by shun on 2019/5/6.
@@ -18,4 +19,10 @@ public interface CommodityService {
     void updateCommodityId(Commodity commodity);
 
     void addCommodity(Commodity commodity);
+
+    Commodity selectByCommodityId(String comId);
+
+    List<Commodity> queryCommodityList1(Commodity commodity);
+
+    List<Commodity> solr(String comName);
 }

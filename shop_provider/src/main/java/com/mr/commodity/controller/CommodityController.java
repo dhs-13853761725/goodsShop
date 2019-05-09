@@ -3,15 +3,20 @@ package com.mr.commodity.controller;
 import com.github.pagehelper.PageInfo;
 import com.mr.commodity.service.CommodityService;
 import com.mr.pojo.Commodity;
-import com.mr.pojo.User;
 import com.mr.utils.DataGridVo;
 import com.mr.utils.Page;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by shun on 2019/5/6.
@@ -22,6 +27,53 @@ public class CommodityController {
 
     @Autowired
     private CommodityService commodityService;
+
+    @Autowired
+    private SolrClient solrClient;
+
+    @RequestMapping(value = "queryCommodityList1",produces = "application/json")
+    @ResponseBody
+    public List<Commodity> queryCommodityList1(@RequestBody Commodity commodity){
+        List<Commodity> list = commodityService.queryCommodityList1(commodity);
+        return list;
+    }
+
+    @RequestMapping("selectByCommodityId1")
+    @ResponseBody
+    public Commodity selectByCommodityId(@RequestParam("comId") String comId){
+        Commodity commodity = commodityService.selectByCommodityId(comId);
+        return commodity;
+    }
+
+
+    @RequestMapping(value = "selectByCommodityName")
+    @ResponseBody
+    public List<Commodity> solr(@RequestParam("comName") String comName) throws IOException, SolrServerException {
+
+        SolrQuery query = new SolrQuery();
+        query.setQuery("com_name:"+comName)
+                .setHighlight(true)
+                .setHighlightSimplePre("<font color='red'>")
+                .setHighlightSimplePost("</font>")
+                .addHighlightField("com_name");
+
+        QueryResponse response = solrClient.query(query);
+        List<Commodity> list = response.getBeans(Commodity.class);
+        //System.out.println(list);
+
+        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
+        //System.out.println(highlighting);
+
+        if(list!=null){
+            for(int i = 0;i < list.size();i++){
+                String comId = list.get(i).getComId();
+                String com_name = highlighting.get(comId).get("com_name").get(0);
+                list.get(i).setComName(com_name);
+            }
+        }
+        System.out.println(list);
+        return list;
+    }
 
     /**
      * 商品列表信息
