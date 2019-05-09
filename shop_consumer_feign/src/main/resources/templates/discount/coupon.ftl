@@ -107,30 +107,31 @@
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
 									<div class="coupon-items">
+										<#list keyong as li>
+										<#if li.yhType == 1>
 										<div class="coupon-item coupon-item-d">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
-														<strong>购物券</strong>
+														<strong>满减卷</strong>
 													</div>
 													<div class="c-price">
-														<strong>￥8</strong>
+														<strong>￥ ${li.yhPrice!}</strong>
 													</div>
 													<div class="c-limit">
-														【消费满&nbsp;95元&nbsp;可用】
+														【消费满&nbsp;${li.yhFull!}元&nbsp;可用】
 													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
+													<div class="c-time"><span>使用期限</span>${li.yhDateBs!}--${li.yhDateEs!}</div>
 													<div class="c-type-top"></div>
 
 													<div class="c-type-bottom"></div>
 												</div>
-
 												<div class="c-msg">
 													<div class="c-range">
 														<div class="range-all">
 															<div class="range-item">
 																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35730144</span>
+																<span class="txt">${li.yhUuid!}</span>
 															</div>
 														</div>
 													</div>
@@ -140,19 +141,20 @@
 												</div>
 											</div>
 										</div>
+										<#else>
 										<div class="coupon-item coupon-item-yf">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
-														<strong>运费券</strong>
+														<strong>无门槛</strong>
 													</div>
 													<div class="c-price">
-														<strong>可抵运费</strong>
+														<strong>￥${li.yhPrice!}</strong>
 													</div>
-													<div class="c-limit">
+													<#--<div class="c-limit">
 														【不含偏远地区】
-													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
+													</div>-->
+													<div class="c-time"><span>使用期限</span>${li.yhDateBs!}--${li.yhDateEs!}</div>
 													<div class="c-type-top"></div>
 
 													<div class="c-type-bottom"></div>
@@ -163,10 +165,9 @@
 														<div class="range-all">
 															<div class="range-item">
 																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35728267</span>
+																<span class="txt">${li.yhUuid!}</span>
 															</div>
 														</div>
-
 													</div>
 													<div class="op-btns">
 														<a href="#" class="btn"><span class="txt">立即使用</span><b></b></a>
@@ -174,41 +175,42 @@
 												</div>
 											</div>
 										</div>
+										</#if>
+									</#list>
 									</div>
-
 								</div>
 								<div class="am-tab-panel am-fade" id="tab2">
 									<div class="coupon-items">
+										<#list bukeyong as li>
+										<#if li.yhType == 1>
 										<div class="coupon-item coupon-item-d">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
-														<strong>购物券</strong>
-														<span class="am-icon-trash"></span>
-													</div>
-													<div class="c-price">
-														<strong>￥8</strong>
-													</div>
-													<div class="c-limit">
-														【消费满&nbsp;95元&nbsp;可用】
-													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
-													<div class="c-type-top"></div>
+                                                        <strong>满减卷</strong>
+                                                    </div>
+                                                    <div class="c-price">
+                                                        <strong>￥ ${li.yhPrice!}</strong>
+                                                    </div>
+                                                    <div class="c-limit">
+                                                        【消费满&nbsp;${li.yhFull!}元&nbsp;可用】
+                                                    </div>
+                                                    <div class="c-time"><span>使用期限</span>${li.yhDateBs!}--${li.yhDateEs!}</div>
+                                                    <div class="c-type-top"></div>
 
-													<div class="c-type-bottom"></div>
-												</div>
-
-												<div class="c-msg">
-													<div class="c-range">
-														<div class="range-all">
-															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35730144</span>
-															</div>
-														</div>
-													</div>
+                                                    <div class="c-type-bottom"></div>
+                                                </div>
+                                                <div class="c-msg">
+                                                    <div class="c-range">
+                                                        <div class="range-all">
+                                                            <div class="range-item">
+                                                                <span class="label">券&nbsp;编&nbsp;号：</span>
+                                                                <span class="txt">${li.yhUuid!}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 													<div class="op-btns c-del">
-														<a href="#" class="btn"><span class="txt">删除</span><b></b></a>
+														<a href="javascript:dele(${li.yhId})" class="btn"><span class="txt">删除</span><b></b></a>
 													</div>
 												</div>
 												
@@ -216,50 +218,52 @@
 													<div class="item-usestatus ">
 														<span><img src="images/gift_stamp_31.png"</span>
 													</div>
-												</li>												
+												</li>
+												</div>
 											</div>
 										</div>
+										<#else>
 										<div class="coupon-item coupon-item-yf">
 											<div class="coupon-list">
-												<div class="c-type">
-													<div class="c-class">
-														<strong>运费券</strong>
-														<span class="am-icon-trash"></span>
-													</div>
-													<div class="c-price">
-														<strong>可抵运费</strong>
-													</div>
-													<div class="c-limit">
-														【不含偏远地区】
-													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
-													<div class="c-type-top"></div>
-
-													<div class="c-type-bottom"></div>
-												</div>
-
-												<div class="c-msg">
-													<div class="c-range">
-														<div class="range-all">
-															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35728267</span>
-															</div>
+													<div class="c-type">
+														<div class="c-class">
+															<strong>无门槛</strong>
 														</div>
+														<div class="c-price">
+															<strong>￥${li.yhPrice!}</strong>
+														</div>
+													<#--<div class="c-limit">
+														【不含偏远地区】
+													</div>-->
+														<div class="c-time"><span>使用期限</span>${li.yhDateBs!}--${li.yhDateEs!}</div>
+														<div class="c-type-top"></div>
 
+														<div class="c-type-bottom"></div>
 													</div>
-													<div class="op-btns c-del">
-														<a href="#" class="btn"><span class="txt">删除</span><b></b></a>
+
+													<div class="c-msg">
+														<div class="c-range">
+															<div class="range-all">
+																<div class="range-item">
+																	<span class="label">券&nbsp;编&nbsp;号：</span>
+																	<span class="txt">${li.yhUuid!}</span>
+																</div>
+															</div>
+															<div class="op-btns c-del">
+															<a href="javascript:dele(${li.yhId})" class="btn"><span class="txt">删除</span><b></b></a>
+														</div>
 													</div>
+
+													<li class="td td-usestatus ">
+														<div class="item-usestatus ">
+															<span><img src="images/gift_stamp_21.png"</span>
+														</div>
+													</li>
 												</div>
-												
-												<li class="td td-usestatus ">
-													<div class="item-usestatus ">
-														<span><img src="images/gift_stamp_21.png"</span>
-													</div>
-												</li>
 											</div>
 										</div>
+										</#if>
+										</#list>
 									</div>
 									
 								</div>
@@ -338,7 +342,18 @@
 
 			</aside>
 		</div>
-
+	<script>
+		function dele(id) {
+			$.ajax({
+				type:'get',
+				url:'deleDiscont?yhId='+id,
+				success:function () {
+					alert("删除成功");
+					history.go(0);
+                }
+			});
+        }
+	</script>
 	</body>
 
 </html>

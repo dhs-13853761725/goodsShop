@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.discount.mapper.DisMapper">
+
+
+    <select id="selectDis" parameterType="Integer" resultType="com.mr.pojo.YhVo">
+        select * from t_discount
+    </select>
+
+    <delete id="deleDiscont" parameterType="Integer" >
+        delete from t_discount where yh_id = #{yhId}
+    </delete>
+
+
+</mapper>

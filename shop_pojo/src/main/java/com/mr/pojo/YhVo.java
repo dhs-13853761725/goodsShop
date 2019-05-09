@@ -1,5 +1,6 @@
 package com.mr.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -36,6 +37,22 @@ public class YhVo {
 
     //当前优惠卷是否使用过
     private Integer yhDesc;
+
+
+    public String getYhDateEs(){
+        if(yhDateE != null){
+            return new SimpleDateFormat("yyyy-MM-dd").format(yhDateE);
+        }
+        return "";
+    }
+
+    public String getYhDateBs(){
+        if(yhDateB != null){
+            return new SimpleDateFormat("yyyy-MM-dd").format(yhDateB);
+        }
+        return "";
+    }
+
 
 
     @Override
