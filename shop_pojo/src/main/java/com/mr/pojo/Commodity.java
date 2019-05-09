@@ -3,12 +3,12 @@ package com.mr.pojo;
 import org.apache.solr.client.solrj.beans.Field;
 
 /**
- * Created by shun on 2019/5/6.
+ * Created by 王美千 on 2019/4/29.
  */
 public class Commodity {
 
     @Field("id")
-    private Integer comId;//商品ID
+    private String comId;//商品ID
     @Field("com_number")
     private String comNumber;//商品编号
     @Field("com_name")
@@ -16,7 +16,7 @@ public class Commodity {
     @Field("com_type")
     private Integer comType;//商品类型
     @Field("com_state")
-    private Integer comState;//商品状态，是否在售
+    private Integer comState;//商品状态
     @Field("com_money")
     private Double comMoney;//促销价
     @Field("com_price")
@@ -31,79 +31,84 @@ public class Commodity {
     private Integer comPack;//包装
     @Field("com_count")
     private Integer comCount;//数量
-    @Field("com_new")
-    private Integer comNew;//是否新品
-    @Field("com_hot")
-    private Integer comHot;//是否热卖
+    private Integer comHot;
+    private Integer comNew;
 
+    @Field("sa_id")
+    private Integer saId;
+    @Field("com_monthsales")
+    private Integer comMonthsales;
+    @Field("com_totalsales")
+    private Integer comTotalsales;
+    @Field()
+    private Integer comTotalevaluate;
 
-    public String getComFreights(){
-        if(comFreight != null){
-            if(comFreight == 0){
-                return "包邮";
-            }else{
-                return ""+comFreight;
-            }
-        }
-        return "";
+    public Commodity(String comId, String comNumber, String comName, Integer comType, Integer comState, Double comMoney, Double comPrice, Integer comAcvitity, Integer comFreight, Integer comFlavor, Integer comPack, Integer comCount, Integer comHot, Integer comNew, Integer saId, Integer comMonthsales, Integer comTotalsales, Integer comTotalevaluate) {
+        this.comId = comId;
+        this.comNumber = comNumber;
+        this.comName = comName;
+        this.comType = comType;
+        this.comState = comState;
+        this.comMoney = comMoney;
+        this.comPrice = comPrice;
+        this.comAcvitity = comAcvitity;
+        this.comFreight = comFreight;
+        this.comFlavor = comFlavor;
+        this.comPack = comPack;
+        this.comCount = comCount;
+        this.comHot = comHot;
+        this.comNew = comNew;
+        this.saId = saId;
+        this.comMonthsales = comMonthsales;
+        this.comTotalsales = comTotalsales;
+        this.comTotalevaluate = comTotalevaluate;
     }
 
-    public String getComStates(){
-        if(comState != null){
-            if(comState==1){
-                return "在售";
-            }else {
-                return "未售";
-            }
-        }
-        return "";
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "comId='" + comId + '\'' +
+                ", comNumber='" + comNumber + '\'' +
+                ", comName='" + comName + '\'' +
+                ", comType=" + comType +
+                ", comState=" + comState +
+                ", comMoney=" + comMoney +
+                ", comPrice=" + comPrice +
+                ", comAcvitity=" + comAcvitity +
+                ", comFreight=" + comFreight +
+                ", comFlavor=" + comFlavor +
+                ", comPack=" + comPack +
+                ", comCount=" + comCount +
+                ", comHot=" + comHot +
+                ", comNew=" + comNew +
+                ", saId=" + saId +
+                ", comMonthsales=" + comMonthsales +
+                ", comTotalsales=" + comTotalsales +
+                ", comTotalevaluate=" + comTotalevaluate +
+                '}';
     }
 
-    public String getComFlavors(){
-        if(comFlavor != null){
-            if(comFlavor==1){
-                return "原味";
-            }else {
-                return "其他味";
-            }
-        }
-        return "";
+    public Integer getComHot() {
+        return comHot;
     }
-    public String getComPacks(){
-        if(comPack != null){
-            if(comPack==1){
-                return "裸装";
-            }else {
-                return "盒装";
-            }
-        }
-        return "";
+
+    public void setComHot(Integer comHot) {
+        this.comHot = comHot;
     }
-    public String getComNews(){
-        if(comNew != null){
-            if(comNew==1){
-                return "新品";
-            }else {
-                return "非新品";
-            }
-        }
-        return "";
+
+    public Integer getComNew() {
+        return comNew;
     }
-    public String getComHots(){
-        if(comHot != null){
-            if(comHot==1){
-                return "热品";
-            }else {
-                return "非热品";
-            }
-        }
-        return "";
+
+    public void setComNew(Integer comNew) {
+        this.comNew = comNew;
     }
-    public Integer getComId() {
+
+    public String getComId() {
         return comId;
     }
 
-    public void setComId(Integer comId) {
+    public void setComId(String comId) {
         this.comId = comId;
     }
 
@@ -195,59 +200,40 @@ public class Commodity {
         this.comCount = comCount;
     }
 
-    public Integer getComNew() {
-        return comNew;
+    public Integer getSaId() {
+        return saId;
     }
 
-    public void setComNew(Integer comNew) {
-        this.comNew = comNew;
+    public void setSaId(Integer saId) {
+        this.saId = saId;
     }
 
-    public Integer getComHot() {
-        return comHot;
+    public Integer getComMonthsales() {
+        return comMonthsales;
     }
 
-    public void setComHot(Integer comHot) {
-        this.comHot = comHot;
+    public void setComMonthsales(Integer comMonthsales) {
+        this.comMonthsales = comMonthsales;
+    }
+
+    public Integer getComTotalsales() {
+        return comTotalsales;
+    }
+
+    public void setComTotalsales(Integer comTotalsales) {
+        this.comTotalsales = comTotalsales;
+    }
+
+    public Integer getComTotalevaluate() {
+        return comTotalevaluate;
+    }
+
+    public void setComTotalevaluate(Integer comTotalevaluate) {
+        this.comTotalevaluate = comTotalevaluate;
     }
 
     public Commodity() {
     }
 
-    public Commodity(Integer comId, String comNumber, String comName, Integer comType, Integer comState, Double comMoney, Double comPrice, Integer comAcvitity, Integer comFreight, Integer comFlavor, Integer comPack, Integer comCount, Integer comNew, Integer comHot) {
-        this.comId = comId;
-        this.comNumber = comNumber;
-        this.comName = comName;
-        this.comType = comType;
-        this.comState = comState;
-        this.comMoney = comMoney;
-        this.comPrice = comPrice;
-        this.comAcvitity = comAcvitity;
-        this.comFreight = comFreight;
-        this.comFlavor = comFlavor;
-        this.comPack = comPack;
-        this.comCount = comCount;
-        this.comNew = comNew;
-        this.comHot = comHot;
-    }
 
-    @Override
-    public String toString() {
-        return "Commodity{" +
-                "comId=" + comId +
-                ", comNumber='" + comNumber + '\'' +
-                ", comName='" + comName + '\'' +
-                ", comType=" + comType +
-                ", comState=" + comState +
-                ", comMoney=" + comMoney +
-                ", comPrice=" + comPrice +
-                ", comAcvitity=" + comAcvitity +
-                ", comFreight=" + comFreight +
-                ", comFlavor=" + comFlavor +
-                ", comPack=" + comPack +
-                ", comCount=" + comCount +
-                ", comNew=" + comNew +
-                ", comHot=" + comHot +
-                '}';
-    }
 }
