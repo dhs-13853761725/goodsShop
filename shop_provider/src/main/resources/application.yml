@@ -42,7 +42,7 @@ spring:
       database: mr
       uri: mongodb://192.168.43.190:27017
     solr:
-      host: http://192.168.43.190:8080/solr/solr
+      host: http://192.168.141.1:8088/solr/commodity
 
 server:
   port: 8763
