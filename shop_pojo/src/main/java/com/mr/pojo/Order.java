@@ -52,38 +52,25 @@ public class Order {
     //订单支付状态
     private Integer orState;
 
+    private Double payPrice;
+
+    private Date payDate;
 
     //商品数量
     private Integer carCount;
 
+    public String getPayDates(){
+        if(payDate != null){
+            return new SimpleDateFormat("yyyy-MM-dd").format(payDate);
+        }
+        return "";
+    }
 
     public String getOrDates(){
         if(orDate != null){
             return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(orDate);
         }
         return "";
-    }
-
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orId=" + orId +
-                ", userId=" + userId +
-                ", carId=" + carId +
-                ", yhId=" + yhId +
-                ", addressId=" + addressId +
-                ", orDate=" + orDate +
-                ", orPrice=" + orPrice +
-                ", orPostage=" + orPostage +
-                ", orContent='" + orContent + '\'' +
-                ", orUuid='" + orUuid + '\'' +
-                ", orUuid1='" + orUuid1 + '\'' +
-                ", orExpress=" + orExpress +
-                ", orComid=" + orComid +
-                ", orState=" + orState +
-                ", carCount=" + carCount +
-                '}';
     }
 
     public Integer getOrId() {
@@ -198,11 +185,73 @@ public class Order {
         this.orState = orState;
     }
 
+    public Double getPayPrice() {
+        return payPrice;
+    }
+
+    public void setPayPrice(Double payPrice) {
+        this.payPrice = payPrice;
+    }
+
+    public Date getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
+    }
+
     public Integer getCarCount() {
         return carCount;
     }
 
     public void setCarCount(Integer carCount) {
+        this.carCount = carCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orId=" + orId +
+                ", userId=" + userId +
+                ", carId=" + carId +
+                ", yhId=" + yhId +
+                ", addressId=" + addressId +
+                ", orDate=" + orDate +
+                ", orPrice=" + orPrice +
+                ", orPostage=" + orPostage +
+                ", orContent='" + orContent + '\'' +
+                ", orUuid='" + orUuid + '\'' +
+                ", orUuid1='" + orUuid1 + '\'' +
+                ", orExpress=" + orExpress +
+                ", orComid=" + orComid +
+                ", orState=" + orState +
+                ", payPrice=" + payPrice +
+                ", payDate=" + payDate +
+                ", carCount=" + carCount +
+                '}';
+    }
+
+    public Order() {
+    }
+
+    public Order(Integer orId, Integer userId, Integer carId, Integer yhId, Integer addressId, Date orDate, Double orPrice, Integer orPostage, String orContent, String orUuid, String orUuid1, Integer orExpress, Integer orComid, Integer orState, Double payPrice, Date payDate, Integer carCount) {
+        this.orId = orId;
+        this.userId = userId;
+        this.carId = carId;
+        this.yhId = yhId;
+        this.addressId = addressId;
+        this.orDate = orDate;
+        this.orPrice = orPrice;
+        this.orPostage = orPostage;
+        this.orContent = orContent;
+        this.orUuid = orUuid;
+        this.orUuid1 = orUuid1;
+        this.orExpress = orExpress;
+        this.orComid = orComid;
+        this.orState = orState;
+        this.payPrice = payPrice;
+        this.payDate = payDate;
         this.carCount = carCount;
     }
 }
