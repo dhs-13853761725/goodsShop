@@ -157,8 +157,8 @@ public class PayController {
 
         //删除购物车中的数据
         if(order.getCarId() != null){
-            payServiceFeign.deleCarShopId(order.getCarId());
-            System.err.println("以删除购物车中{"+order.getCarId()+"}的数据");
+            //payServiceFeign.deleCarShopId(order.getCarId());
+            //System.err.println("以删除购物车中{"+order.getCarId()+"}的数据");
         }
         String body = "";//order.toString();//out_trade_no
         request.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","

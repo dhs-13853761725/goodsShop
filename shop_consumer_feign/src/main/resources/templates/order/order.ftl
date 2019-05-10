@@ -166,7 +166,7 @@
 															</li>
 															<li class="td td-price">
 																<div class="item-price">
-																	${li.comPrice!}
+																	${li.comMoney!}
 																</div>
 															</li>
 															<li class="td td-number">

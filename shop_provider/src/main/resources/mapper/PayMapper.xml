@@ -11,7 +11,15 @@
     <select id="payComList"  resultType="com.mr.shopcart.pojo.ResponCar">
            select
          u.*,
-         d.*,
+         d.yh_dateB,
+		 d.yh_dateE,
+         d.yh_Desc,
+         d.yh_full,
+         d.yh_hq,
+         d.yh_id,
+         d.yh_price,
+         d.yh_type,
+         d.yh_uuid,
          s.*,
 		 c.*
       from

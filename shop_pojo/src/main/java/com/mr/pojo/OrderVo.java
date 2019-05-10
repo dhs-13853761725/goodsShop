@@ -52,11 +52,13 @@ public class OrderVo {
     //是否评论
     private Integer orIfcomment;
 
+    private Double comMoney;
+
 
     //get方法   总金额
     public String getSumPrice(){
         DecimalFormat df = new DecimalFormat("#.00");
-        return "" + df.format(orCount * comPrice);
+        return "" + df.format(orCount * comMoney);
     }
 
     public String getOrDates(){
@@ -83,6 +85,7 @@ public class OrderVo {
                 ", orState=" + orState +
                 ", orAccept=" + orAccept +
                 ", orIfcomment=" + orIfcomment +
+                ", comMoney=" + comMoney +
                 '}';
     }
 
@@ -196,5 +199,13 @@ public class OrderVo {
 
     public void setOrIfcomment(Integer orIfcomment) {
         this.orIfcomment = orIfcomment;
+    }
+
+    public Double getComMoney() {
+        return comMoney;
+    }
+
+    public void setComMoney(Double comMoney) {
+        this.comMoney = comMoney;
     }
 }
