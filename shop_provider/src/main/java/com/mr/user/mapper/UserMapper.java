@@ -2,6 +2,7 @@ package com.mr.user.mapper;
 
 import com.mr.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,4 +13,7 @@ import java.util.List;
 public interface UserMapper {
     List<User> queryUserList();
 
+    User queryUserId(@Param("userId") Integer userId);
+
+    int updateUser(User user);
 }

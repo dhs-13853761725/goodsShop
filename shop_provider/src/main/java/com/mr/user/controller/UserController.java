@@ -1,20 +1,16 @@
 package com.mr.user.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.mr.pojo.Address;
 import com.mr.pojo.User;
 import com.mr.user.service.UserService;
 import com.mr.utils.DataGridVo;
 import com.mr.utils.Page;
-import com.mr.utils.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.Map;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by shun on 2019/4/29.
@@ -32,6 +28,20 @@ public class UserController {
         PageInfo<User> userPageInfo = userService.queryUserList(page);
         DataGridVo<User> userDataGridVo = new DataGridVo<User>(0,"",userPageInfo.getTotal(),userPageInfo.getList());
         return userDataGridVo;
+    }
+
+    @RequestMapping(value = "queryUserId")
+    @ResponseBody
+    public User queryUserId(@RequestParam Integer userId){
+        User user = userService.queryUserId(userId);
+        return user;
+    }
+
+    @RequestMapping(value = "updateUser")
+    @ResponseBody
+    public int updateUser(@RequestBody User user){
+        int i = userService.updateUser(user);
+        return i;
     }
 
 }

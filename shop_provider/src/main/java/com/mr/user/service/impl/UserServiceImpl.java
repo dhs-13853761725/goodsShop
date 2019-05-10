@@ -2,23 +2,21 @@ package com.mr.user.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mr.pojo.Address;
 import com.mr.pojo.User;
 import com.mr.user.mapper.UserMapper;
 import com.mr.user.service.UserService;
 import com.mr.utils.Page;
-import com.mr.utils.ResultVo;
 import com.mr.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by shun on 2019/5/6.
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
@@ -35,6 +33,15 @@ public class UserServiceImpl implements UserService{
         return pageInfo;
     }
 
+    @Override
+    public User queryUserId(Integer userId) {
+        User user = userMapper.queryUserId(userId);
+        return user;
+    }
 
-
+    @Override
+    public int updateUser(User user) {
+        int i = userMapper.updateUser(user);
+        return i;
+    }
 }

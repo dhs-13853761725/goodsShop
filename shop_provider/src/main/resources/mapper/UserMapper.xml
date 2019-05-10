@@ -20,7 +20,11 @@
         SELECT * FROM t_user
     </select>
 
-    <select id="selectOness" resultType="user">
-         SELECT * FROM t_user
+    <select id="queryUserId" resultMap="user">
+        SELECT * from t_user where user_id = #{userId}
     </select>
+
+    <update id="updateUser" parameterType="com.mr.pojo.User">
+        UPDATE t_user SET `user_nickname`=#{userNickname}, `user_name`=#{userName}, `user_sex`=#{userSex}, `user_phone`=#{userPhone}, `user_email`=#{userEmail} WHERE (`user_id`=#{userId});
+    </update>
 </mapper>
