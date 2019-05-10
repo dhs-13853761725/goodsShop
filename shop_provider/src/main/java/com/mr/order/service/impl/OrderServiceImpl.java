@@ -30,6 +30,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void updateState(String state) {
         orderMapper.updateState(state);
+        System.err.println("订单"+state+"支付成功");
+        Integer id = orderMapper.seleCarId(state);
+        orderMapper.updaCarShop(id);
+        //System.err.println("购物车"+id+"已经隐藏!!");
     }
 
     @Override

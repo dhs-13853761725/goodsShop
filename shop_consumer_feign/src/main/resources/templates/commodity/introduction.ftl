@@ -1364,20 +1364,33 @@
         var userId = $("#userId").val();
         //商品id
         var comId = $("#comId").val();
-        //商品样式
-        var yang = yangshi();
-        //商品包装
-        var pack = pack1();
-
         $.ajax({
             type:'get',
-            url:'insertCarShop',
-            data:{userId:userId,carContent:comId,carCount:comcount,comFlavor:yang,comPack:pack},
-            success:function (data) {
-                alert("即将跳转到购物车页面");
-                location.href = "/shopcartMain?userId="+userId;
+            url:'seleCarShopYa',
+            data:{comId:comId,userId:userId},
+            dataType:'json',
+            success:function (msg) {
+                if(msg == 1){
+                    alert("购物车中已有商品，请生成订单后再次选择！！");
+                    return;
+                }
+                //商品样式
+                var yang = yangshi();
+                //商品包装
+                var pack = pack1();
+
+                $.ajax({
+                    type:'get',
+                    url:'insertCarShop',
+                    data:{userId:userId,carContent:comId,carCount:comcount,comFlavor:yang,comPack:pack},
+                    success:function (data) {
+                        alert("即将跳转到购物车页面");
+                        location.href = "/shopcartMain?userId="+userId;
+                    }
+                });
             }
         });
+
 
     }
 

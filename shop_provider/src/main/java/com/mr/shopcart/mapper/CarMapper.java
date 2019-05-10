@@ -1,5 +1,6 @@
 package com.mr.shopcart.mapper;
 
+import com.mr.pojo.ComUser;
 import com.mr.shopcart.pojo.ResponCar;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -28,4 +29,11 @@ public interface CarMapper {
      * @param car
      */
     void insertCarShop(ResponCar car);
+
+    /**
+     * 查询购物车中是否有商品id
+     * @param c
+     * @return
+     */
+    List seleCarShopYa(ComUser c);
 }

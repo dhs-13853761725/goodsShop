@@ -16,6 +16,10 @@ import java.util.List;
 @RestController
 public class EvaluateController {
 
+
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  评论初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
     @Autowired
     private EvaluateService evaluateService;
 

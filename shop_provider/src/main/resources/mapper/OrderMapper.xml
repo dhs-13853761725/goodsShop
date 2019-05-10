@@ -39,4 +39,16 @@ where
 	d.or_id=z.or_id and
 	u.user_id=d.user_id
     </select>
+
+    <select id="seleCarId" parameterType="String" resultType="Integer">
+        select car_id  from t_order where or_uuid = #{state}
+    </select>
+
+    <delete id="deleCarShop" parameterType="Integer">
+        DELETE from t_shopcar where car_id = #{id}
+    </delete>
+
+    <update id="updaCarShop" parameterType="Integer">
+        update t_shopcar set car_state = 2 where car_id = #{id}
+    </update>
 </mapper>

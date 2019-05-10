@@ -37,6 +37,8 @@
 		s.car_content = c.com_id
 	  AND
         s.car_id = #{carId}
+       AND
+         s.car_state = 1
     </select>
 
 
@@ -73,7 +75,6 @@
             t_user u,
             t_commodity c,
             t_shopcar s
-
         WHERE
             r.user_id = u.user_id
         and
@@ -116,6 +117,8 @@
             r.or_state = 1
         and
             r.user_id = #{userId}
+        AND
+            s.car_state = 1
     </select>
 
     <select id="selectSuccess" parameterType="Integer" resultType="com.mr.pojo.OrderVo">
@@ -142,6 +145,8 @@
             r.or_state = 2
         and
             r.user_id = #{userId}
+        and
+            s.car_state = 2
     </select>
 
     <update id="updateStateKey" parameterType="String">

@@ -19,6 +19,12 @@ public class CommController {
     @Autowired
     private ComService comService;
 
+
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  评论初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
+
+
     @RequestMapping("commentlistMain")
     public ModelAndView commentlistMain(Integer orId){
         ModelAndView mo = new ModelAndView();

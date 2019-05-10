@@ -19,4 +19,10 @@ public interface OrderMapper {
     Order selectByPrice(String uuid);
 
     List<Order> queryOrderList();
+
+    Integer seleCarId(String state);
+
+    void deleCarShop(Integer id);
+
+    void updaCarShop(Integer id);
 }

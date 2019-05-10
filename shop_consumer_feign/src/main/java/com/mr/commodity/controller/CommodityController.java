@@ -22,6 +22,12 @@ import java.util.Map;
 @Controller
 public class CommodityController {
 
+
+
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  商品详情初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
+
     @Autowired
     private CommodityService commodityService;
 

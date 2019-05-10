@@ -1,6 +1,7 @@
 package com.mr.shopcart.service;
 
 
+import com.mr.pojo.ComUser;
 import com.mr.shopcart.pojo.ResponCar;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface CarService {
     List goodsListAll();
 
     void insertCarShop(ResponCar car);
+
+    int seleCarShopYa(ComUser c);
 }

@@ -19,6 +19,11 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  地址初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
+
     /**
      * 查
      * @return

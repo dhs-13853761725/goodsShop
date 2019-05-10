@@ -1,5 +1,6 @@
 package com.mr.shopcart.controller;
 
+import com.mr.pojo.ComUser;
 import com.mr.shopcart.pojo.ResponCar;
 import com.mr.shopcart.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,11 @@ public class CarController {
     @RequestMapping("insertCarShop1")
     public void insertCarShop(@RequestBody ResponCar car){
         carService.insertCarShop(car);
+    }
+
+    @RequestMapping("seleCarShopYa1")
+    public int seleCarShopYa(@RequestBody ComUser c){
+        return carService.seleCarShopYa(c);
     }
 
 }

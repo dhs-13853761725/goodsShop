@@ -17,12 +17,14 @@
 				 t_commodity c
       where
             u.user_id = s.user_id
-				AND
-			d.yh_id = u.user_discount
-      and
-        u.user_id = #{userId}
+			AND
+			  d.yh_id = u.user_discount
+            and
+              u.user_id = #{userId}
 			and
 				s.car_content = c.com_id
+			and
+			    s.car_state = 1
     </select>
 
 
@@ -32,7 +34,20 @@
     </select>
 
     <insert id="insertCarShop" parameterType="com.mr.shopcart.pojo.ResponCar">
-        INSERT INTO t_shopcar (`user_id`, `car_content`, `yh_id`, `car_count`, `car_color`, `car_pack`)
-         VALUES (#{userId}, #{carContent}, null, #{carCount}, #{comFlavor}, #{comPack});
+        INSERT INTO t_shopcar (`user_id`, `car_content`, `yh_id`, `car_count`, `car_color`, `car_pack`,car_state)
+         VALUES (#{userId}, #{carContent}, null, #{carCount}, #{comFlavor}, #{comPack},1);
     </insert>
+
+
+    <select id="seleCarShopYa" parameterType="com.mr.pojo.ComUser" resultType="int">
+        select
+            s.car_content
+        FROM
+            t_user u,
+            t_shopcar s
+        where
+            s.user_id = u.user_id
+          and
+            u.user_id = #{userId}
+    </select>
 </mapper>

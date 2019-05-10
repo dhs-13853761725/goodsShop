@@ -1,5 +1,6 @@
 package com.mr.shopcart.service;
 
+import com.mr.pojo.ComUser;
 import com.mr.shopcart.pojo.ResponCar;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,7 @@ public interface ShopServices {
 
     @RequestMapping("insertCarShop1")
     void insertCarShop(@RequestBody ResponCar car);
+
+    @RequestMapping("seleCarShopYa1")
+    int seleCarShopYa(@RequestBody ComUser c);
 }

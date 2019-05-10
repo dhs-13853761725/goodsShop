@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 
 
+
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》 高亮初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
+
     /**
      * 打开个人中心页面
      * @return

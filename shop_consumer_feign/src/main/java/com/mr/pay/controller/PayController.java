@@ -50,6 +50,10 @@ public class PayController {
 
 
 
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  支付初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
+
 
     @Autowired
     private PayServiceFeign payServiceFeign;

@@ -19,6 +19,9 @@ import java.util.List;
 @RestController
 public class DisController1 {
 
+    static {
+        System.err.println("》》》》》》》》》》》》》》》》》》》》  优惠卷初始化完成  《《《《《《《《《《《《《《《《《《《《");
+    }
 
     @Autowired
     private DisService disService;
