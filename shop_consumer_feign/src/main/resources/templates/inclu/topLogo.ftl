@@ -7,10 +7,11 @@
 <body>
 <!--顶部导航条 -->
 <div class="am-container header">
+    <input id = "userId" value="${userId!}" type="hidden">
     <ul class="message-l">
         <div class="topMessage">
             <div class="menu-hd">
-                <a href="/member/loginPage" target="_top" class="h">亲，请登录</a>
+                <a href="/loginMain" target="_top" class="h">亲，请登录</a>
                 <a href="/member/registerPage" target="_top">免费注册</a>
             </div>
         </div>
@@ -35,7 +36,7 @@
 
 <script>
     function shopcartMain() {
-        var userId = 1;
+        var userId = $("#userId").val();
         if(userId != null) {
             location.href = "/shopcartMain?userId="+userId;
         }else{

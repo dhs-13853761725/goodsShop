@@ -2322,14 +2322,4 @@
 		<script type="text/javascript " src="basic/js/quick_links.js "></script>
 
 	</body>
-    <script>
-        function shopcartMain() {
-            var userId = 1;
-            if(userId != null) {
-                location.href = "/shopcartMain?userId="+userId;
-            }else{
-                alert("请先登录");
-            }
-        }
-    </script>
 </html>

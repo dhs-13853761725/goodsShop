@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <input type="hidden" id="userId" value="1"/>
+    <input id = "userId" value="${userId!}" type="hidden">
 <!--顶部导航条 -->
 <#include "/inclu/topLogo.ftl">
 

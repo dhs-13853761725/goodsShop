@@ -71,6 +71,9 @@
 					</div>
 					<div class="clear"></div>
 				<#list list as item>
+					<#if list?? && (list ?size > 0)>
+					    <center>暂无商品！请添加</center>
+					<#else>
 					<#--<tr class="item-list">
 						<div class="bundle  bundle-last ">
 							<div class="bundle-hd">
@@ -243,7 +246,7 @@
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
 											<input type="hidden" name = "carId" value="${item.carId!}"/>
-											<input class="check" id="jie${item.carId}" onclick="jie()" name="che${item.carId}"  value="${item.carId!}" type="checkbox">
+											<input class="check" id="jie${item.carId!}" onclick="jie()" name="che${item.carId!}"  value="${item.carId!}" type="checkbox">
 											<label for="J_CheckBox_170769542747"></label>
 										</div>
 									</li>
@@ -306,6 +309,7 @@
 							</div>
 						</div>
 					</tr>
+					</#if>
                     </#list>
 
 				</div>
