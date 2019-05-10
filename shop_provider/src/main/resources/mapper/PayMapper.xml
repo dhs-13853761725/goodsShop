@@ -117,8 +117,8 @@
             r.or_state = 1
         and
             r.user_id = #{userId}
-        AND
-            s.car_state = 1
+/*        AND
+            s.car_state = 2*/
     </select>
 
     <select id="selectSuccess" parameterType="Integer" resultType="com.mr.pojo.OrderVo">

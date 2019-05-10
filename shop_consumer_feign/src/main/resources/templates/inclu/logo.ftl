@@ -13,7 +13,7 @@
         <li class="person">
             <a href="#">个人资料</a>
             <ul>
-                <li> <a href="/information?userId=1">个人信息</a></li>
+                <li> <a href="/information?userId=${useId!}">个人信息</a></li>
                 <li> <a href="safety.html">安全设置</a></li>
                 <li> <a href="/queryAdressList">收货地址</a></li>
             </ul>
@@ -21,14 +21,14 @@
         <li class="person">
             <a href="#">我的交易</a>
             <ul>
-                <li><a href="/orderMain?userId=1">订单管理</a></li>
+                <li><a href="/orderMain?userId=${userId!}">订单管理</a></li>
                 <li> <a href="change.html">退款售后</a></li>
             </ul>
         </li>
         <li class="person">
             <a href="#">我的资产</a>
             <ul>
-                <li> <a href="/couponMain?userId=1&comId=1">优惠券 </a></li>
+                <li> <a href="/couponMain?userId=${useId!}&comId=${comId!}">优惠券 </a></li>
                 <li> <a href="bonus.html">红包</a></li>
                 <li> <a href="bill.html">账单明细</a></li>
             </ul>

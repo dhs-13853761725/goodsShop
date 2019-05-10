@@ -21,7 +21,6 @@
 
 	<body>
 
-		<input type="hidden" id = "userId" value="${userId!}"/>
 		<input type="hidden" id = "gwId" value="${gwId!}"/>
 		<input type="hidden" id = "comId" value="${comId!}"/>
 
@@ -57,13 +56,13 @@
 
 
 						<div class="clear"></div>
-						<ul>
+						<ul id = "addr" onclick="addr()">
 							<div class="per-border"></div>
-
 							<#-- 对象 -->
 						<#list addrList as item>
-							<li class="user-addresslist defaultAddr">
-
+							<#if (item.addressDefault) == 1!'<li class="user-addresslist">'>
+								<li class="user-addresslist defaultAddr">
+							</#if>
 								<div class="address-left">
 									<div class="user DefaultAddr">
 
@@ -412,6 +411,34 @@
 			<div class="clear"></div>
 	
 	<script type="application/javascript">
+		
+		
+		function addr() {
+            var wu = null;
+            var content = document.getElementById("addr");
+            var items = content.getElementsByTagName("li");
+            for(var i = 0;i<items.length;i++){
+                if(items[i].getAttribute("class").indexOf("defaultAddr") != -1){
+                    console.log(items[i].innerText)
+                    /*if(items[i].innerText == "圆通"){
+                        wu = 1;
+                    }else if(items[i].innerText == "申通"){
+                        wu = 2;
+                    }else if(items[i].innerText == "韵达"){
+                        wu = 3;
+                    }else if(items[i].innerText == "中通"){
+                        wu = 4;
+                    }else if(items[i].innerText == "顺丰"){
+                        wu = 5;
+                    }*/
+                }
+            }
+            console.log(wu);
+            return wu;
+        }
+		
+		
+		
         function zeng() {
             $.ajax({
                 type:'get',

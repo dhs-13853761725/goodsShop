@@ -19,7 +19,6 @@
 	<body>
 
 		<!--顶部导航条 -->
-				<input value="1" type="hidden" id = "userId"/>
 				<#include "/inclu/topLogo.ftl">
 
 			<!--悬浮搜索框-->
@@ -71,7 +70,7 @@
 					</div>
 					<div class="clear"></div>
 				<#list list as item>
-					<#if list?? && (list ?size > 0)>
+					<#if list?? && (list ?size = 0)>
 					    <center>暂无商品！请添加</center>
 					<#else>
 					<#--<tr class="item-list">

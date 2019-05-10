@@ -212,7 +212,7 @@
 															<#if li.orState ==1>
                                                                 <li class="td td-change">
                                                                     <input id="sum1${li.orId}" type="hidden" value="${li.sumPrice!}">
-                                                                    <a href="javascript:zhifu(${li.orId!})">
+                                                                    <a href="javascript:zhifu(${li.orId!},'${li.orUuid!}')">
                                                                         <div class="am-btn am-btn-danger anniu">
                                                                             一键支付</div></a>
                                                                 </li>
@@ -361,7 +361,7 @@
 															</li>
 															<li class="td td-change">
                                                                 <input type="hidden" id="sum1${li.orId}" value="${li.sumPrice!}">
-																<a href="javascript:zhifu(${li.orId!})">
+																<a href="javascript:zhifu(${li.orId!},'${li.orUuid!}')">
 																<div class="am-btn am-btn-danger anniu">
 																	一键支付</div></a>
 															</li>
@@ -803,11 +803,11 @@
         }
 
 		//一键支付
-		function zhifu(id) {
+		function zhifu(id,uuid) {
 			var orPrice = $("#sum1"+id).val();//document.getElementById("sum"+id).innerText;
-			var uuid = $("#uuid1"+id).val();//document.getElementById("sum"+id).innerText;
+			var userId = $("#userId").val();//document.getElementById("sum"+id).innerText;
 			//var uuid = document.getElementById("uuid1"+id).innerText;
-            location.href = "alipay?userId=1&addressId=1&orComid=1&orPrice="+orPrice+"&orPostage=0&orContent=qqq&orExpress=1&carCount=2&orUuid1="+uuid;
+            location.href = "alipay?userId="+userId+"&addressId=1&orComid=1&orPrice="+orPrice+"&orPostage=0&orContent=qqq&orExpress=1&carCount=2&orUuid1="+uuid;
         }
 
 
