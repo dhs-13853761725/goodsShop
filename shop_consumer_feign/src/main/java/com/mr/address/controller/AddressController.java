@@ -102,4 +102,10 @@ public class AddressController {
         return mm;
     }
 
+
+    @RequestMapping("seleAddrId")
+    public Address seleAddrId(Integer addressId){
+        return addressService.selectByAddrId(addressId);
+    }
+
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.mr.pay.mapper.PayMapper">
 
     <select id="payAddrList" parameterType="Integer" resultType="com.mr.pojo.AddrUser">
-       select d.*,t.user_nickname from t_address d,t_user t where d.user_id = t.user_id and t.user_id = 1
+       select d.*,t.user_nickname from t_address d,t_user t where d.user_id = t.user_id and t.user_id = #{userId}
     </select>
     
     <select id="payComList"  resultType="com.mr.shopcart.pojo.ResponCar">

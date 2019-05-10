@@ -19,4 +19,6 @@ public interface AddressMapper {
     Address selectIdd(Integer addressId);
 
     void deletel(Integer addressId);
+
+    Address selectByAddrId(Integer addressId);
 }

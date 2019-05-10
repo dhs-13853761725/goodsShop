@@ -51,4 +51,10 @@ where
 	w.address_id=w.address_id and
 	a.user_id=w.user_id
 	</select>
+
+
+
+	<select id="selectByAddrId" resultType="com.mr.pojo.Address" parameterType="Integer">
+		select * from t_address where address_id = #{addressId}
+	</select>
 </mapper>

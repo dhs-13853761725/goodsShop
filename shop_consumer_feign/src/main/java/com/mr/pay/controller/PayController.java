@@ -234,7 +234,7 @@ public class PayController {
             //支付详情
 
             Order ok  = payServiceFeign.selectByPrice(out_trade_no);
-            AddrUser addrUser = payServiceFeign.selectByAddrId(1);
+            AddrUser addrUser = payServiceFeign.selectByAddrId(ok.getAddressId());
             PayOrder po = new PayOrder();
             po.setOrId(ok.getOrId());
             po.setUserId(ok.getUserId());

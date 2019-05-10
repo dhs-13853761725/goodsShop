@@ -15,4 +15,6 @@ public interface AddressService {
     Address selectIdd(Integer addressId);
 
     void deletel(Integer addressId);
+
+    Address selectByAddrId(Integer addressId);
 }

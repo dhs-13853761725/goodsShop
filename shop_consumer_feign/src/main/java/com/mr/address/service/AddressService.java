@@ -38,4 +38,7 @@ public interface AddressService {
 
     @RequestMapping(value="deletel",method = RequestMethod.GET)
     void delete(@RequestBody Integer addressId);
+
+    @RequestMapping("selectByAddrId1")
+    Address selectByAddrId(@RequestBody Integer addressId);
 }

@@ -54,5 +54,10 @@ public class AddressServiceImpl implements AddressService{
         addressMapper.deletel(addressId);
     }
 
+    @Override
+    public Address selectByAddrId(Integer addressId) {
+        return addressMapper.selectByAddrId(addressId);
+    }
+
 
 }

@@ -62,4 +62,11 @@ public class AddressController {
     public void deletel(@RequestParam("address") Address address){
         addressService.deletel(address.getAddressId());
     }
+
+
+    @RequestMapping("selectByAddrId1")
+    public Address selectByAddrId(@RequestBody Integer addressId){
+        return addressService.selectByAddrId(addressId);
+    }
+
 }

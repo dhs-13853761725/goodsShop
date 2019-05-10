@@ -60,13 +60,15 @@
 							<div class="per-border"></div>
 							<#-- 对象 -->
 						<#list addrList as item>
-							<#if (item.addressDefault) == 1!'<li class="user-addresslist">'>
-								<li class="user-addresslist defaultAddr">
+							<#if (item.addressDefault)??>
+								<li class="user-addresslist defaultAddr" value="${item.addressId!}">
+							<#else>
+                                <li class="user-addresslist"value="${item.addressId!}">
 							</#if>
-								<div class="address-left">
+                            <div class="address-left">
 									<div class="user DefaultAddr">
 
-										<span class="buy-address-detail">   
+										<span class="buy-address-detail">
                    <span class="buy-user">${item.addressName!} </span>
 										<span class="buy-phone">${item.addressPhone!}</span>
 										</span>
@@ -296,18 +298,18 @@
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
 												<span class="buy--address-detail">
-								   <span class="province">${o.addressProvince!}</span>省
-												<span class="city">${o.addressCity!}</span>市
-												<span class="dist">${o.addressCounty!}</span>区
-												<span class="street">${o.addressDetailed!}</span>
+								   					<span class="province" id = "addressProvince">${o.addressProvince!}</span>省
+													<span class="city" id = "addressCity">${o.addressCity!}</span>市
+													<span class="dist" id = "addressCounty">${o.addressCounty!}</span>区
+													<span class="street "id = "addressDetailed">${o.addressDetailed!}</span>
 												</span>
-												</span>
+												<#--</span>-->
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
 												<span class="buy-address-detail">   
-                                         <span class="buy-user">${o.addressName!} </span>
-												<span class="buy-phone">${o.addressPhone!}</span>
+                                         		<span class="buy-user" id = "addressName">${o.addressName!} </span>
+												<span class="buy-phone" id = "addressPhone">${o.addressPhone!}</span>
 												</span>
 											</p>
 										</div>
@@ -419,24 +421,31 @@
             var items = content.getElementsByTagName("li");
             for(var i = 0;i<items.length;i++){
                 if(items[i].getAttribute("class").indexOf("defaultAddr") != -1){
-                    console.log(items[i].innerText)
-                    /*if(items[i].innerText == "圆通"){
-                        wu = 1;
-                    }else if(items[i].innerText == "申通"){
-                        wu = 2;
-                    }else if(items[i].innerText == "韵达"){
-                        wu = 3;
-                    }else if(items[i].innerText == "中通"){
-                        wu = 4;
-                    }else if(items[i].innerText == "顺丰"){
-                        wu = 5;
-                    }*/
+                    wu = items[i].getAttribute("value");
                 }
             }
+            aop(wu);
             console.log(wu);
+
             return wu;
         }
-		
+
+        function aop(wu) {
+            $.ajax({
+                type:'get',
+                url:"seleAddrId",
+                data:{addressId:wu},
+                dataType:'json',
+                success:function (data) {
+                    document.getElementById("addressProvince").innerHTML = data.addressProvince;
+                    document.getElementById("addressCity").innerHTML = data.addressCity;
+                    document.getElementById("addressCounty").innerHTML = data.addressCounty;
+                    document.getElementById("addressDetailed").innerHTML = data.addressDetailed;
+                    document.getElementById("addressName").innerHTML = data.addressName;
+                    document.getElementById("addressPhone").innerHTML = data.addressPhone;
+                }
+            });
+        }
 		
 		
         function zeng() {
@@ -540,6 +549,12 @@
 		
 		function zhifu() {
             var zhi = document.getElementById("zhifu").getAttribute("class");
+            //选择地址
+            var addre = addr();
+            if(addre == null){
+                alert("请选择收货地址");
+                return;
+            }
             var wu = wuliu();
             //选择了支付方式
 			if(zhi.indexOf("selected") != -1){
@@ -547,6 +562,8 @@
 					alert("请选择物流");
 					return;
 				}
+
+
 				//进行付款
 				//支付金额
                 var orPrice = $("#jiesuan1").val();
@@ -560,7 +577,7 @@
                 var orContent = document.getElementById("liuyan").innerHTML;
                 //获取购买数量
 				var carCount = document.getElementById("carCount").innerText;
-				location.href = "alipay?userId="+userId+"&addressId=1&orComid="+orComid+"&orPrice="+orPrice+"&orPostage="+wu+"&orContent="+orContent+"&orExpress=1&carCount="+carCount+"&carId="+carId;
+				location.href = "alipay?userId="+userId+"&addressId="+addre+"&orComid="+orComid+"&orPrice="+orPrice+"&orPostage="+wu+"&orContent="+orContent+"&orExpress=1&carCount="+carCount+"&carId="+carId;
 			}else{
 			    alert("亲，请选择支付方式！");
 			}
