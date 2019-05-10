@@ -40,7 +40,7 @@ spring:
   data:
     mongodb:
       database: mr
-      uri: mongodb://192.168.43.190:27017
+      uri: mongodb://192.168.43.113:27017
     solr:
       host: http://192.168.43.126:8088/solr/commodity
 
