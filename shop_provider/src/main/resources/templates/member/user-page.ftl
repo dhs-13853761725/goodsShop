@@ -10,10 +10,12 @@
 <table id="demo" lay-filter="test"></table>
 <!-- 字段判断 -->
 <script type="text/html" id="belongTpl">
-    {{#  if(d.userSex === 1){ }}
+    {{#  if(d.userSex  === 1){ }}
     <span>男</span>
-    {{#  } else { }}
+    {{#  } else if(d.userSex  === 2) { }}
     <span>女</span>
+    {{#  } else if(d.userSex  === 3) { }}
+    <span>保密</span>
     {{#  } }}
 </script>
 <script type="text/html" id="belongTpl1">
