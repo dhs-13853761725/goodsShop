@@ -70,7 +70,7 @@
 								<div class="m-bg"></div>
 								<div class="m-userinfo">
 									<div class="m-baseinfo">
-										<a href="information.html">
+										<a href="/information?userId=1">
 											<img src="/images/getAvatar.do.jpg">
 										</a>
 										<em class="s-name">(小叮当)<span class="vip1"></em>
