@@ -19,4 +19,8 @@
     <select id="queryUserList" resultMap="user">
         SELECT * FROM t_user
     </select>
+
+    <select id="selectOness" resultType="user">
+         SELECT * FROM t_user
+    </select>
 </mapper>

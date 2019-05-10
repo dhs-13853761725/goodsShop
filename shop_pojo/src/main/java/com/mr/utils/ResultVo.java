@@ -8,6 +8,9 @@ public class ResultVo<T> {
 	
 	private T data; //
 
+	private Integer isSuccess;
+
+
 	public Integer getCode() {
 		return code;
 	}
@@ -60,4 +63,12 @@ public class ResultVo<T> {
 //		return new  ResultVo(200, msg,data);
 //	}
 
+
+	public Integer getIsSuccess() {
+		return isSuccess;
+	}
+
+	public void setIsSuccess(Integer isSuccess) {
+		this.isSuccess = isSuccess;
+	}
 }

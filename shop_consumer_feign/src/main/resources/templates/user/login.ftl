@@ -9,47 +9,41 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
-
+		<script src="/js/jquery.js"></script>
 		<link rel="stylesheet" href="/AmazeUI-2.4.2/assets/css/amazeui.css" />
 		<link href="/css/dlstyle.css" rel="stylesheet" type="text/css">
 	</head>
-
 	<body>
-
 		<div class="login-boxtitle">
 			<a href="home.html"><img alt="logo" src="/images/logobig.png" /></a>
 		</div>
-
 		<div class="login-banner">
 			<div class="login-main">
 				<div class="login-banner-bg"><span></span><img src="/images/big.jpg" /></div>
 				<div class="login-box">
-
 							<h3 class="title">登录商城</h3>
-
 							<div class="clear"></div>
-						
+
 						<div class="login-form">
-						  <form>
+						  <form id="a">
 							   <div class="user-name">
 								    <label for="user"><i class="am-icon-user"></i></label>
-								    <input type="text" name="" id="user" placeholder="邮箱/手机/用户名">
+								    <input type="text" name="" id="userPhone" placeholder="手机号">
                  </div>
                  <div class="user-pass">
 								    <label for="password"><i class="am-icon-lock"></i></label>
-								    <input type="password" name="" id="password" placeholder="请输入密码">
+								    <input type="password" name="" id="userPass" placeholder="请输入密码">
                  </div>
               </form>
            </div>
-            
             <div class="login-links">
                 <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
 								<a href="#" class="am-fr">忘记密码</a>
-								<a href="register.html" class="zcnext am-fr am-btn-default">注册</a>
+								<a href="tiao" class="zcnext am-fr am-btn-default">注册</a>
 								<br />
             </div>
 								<div class="am-cf">
-									<input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
+									<input type="submit" name="" onclick="fun()" value="登 录" class="am-btn am-btn-primary am-btn-sm">
 								</div>
 						<div class="partner">		
 								<h3>合作账号</h3>
@@ -58,13 +52,10 @@
 								<li><a href="#"><i class="am-icon-weibo am-icon-sm"></i><span>微博登录</span> </a></li>
 								<li><a href="#"><i class="am-icon-weixin am-icon-sm"></i><span>微信登录</span> </a></li>
 							</div>
-						</div>	
-
+						</div>
 				</div>
 			</div>
 		</div>
-
-
 					<div class="footer ">
 						<div class="footer-hd ">
 							<p>
@@ -87,6 +78,28 @@
 							</p>
 						</div>
 					</div>
+        <script type="text/javascript">
+            function fun() {
+                $.ajax({
+                    url:"/login",                   　　  //地址
+                    type:'post',　　　　　　 //请求方式 还可以是get type不可写成Type 不让会导致数据发送不过去,使用post无法接受
+                    dataType:'json',　　　　//返回格式 ,还可以是json
+                    async:false,　 　　 //同步异步 ,一般为异步flase
+                    data:$("#a").serialize(),　　 //参数值
+                    success:function (data) {
+                        alert(data.msg)
+                        alert(data.sup)
+                        if(data.msg=="登陆成功"){
+                            location.href="index.jsp";
+                        }
+                    }
+                });
+            }
+        </script>
+       <#-- https://blog.csdn.net/weixin_43413314/article/details/83049326
+        https://blog.csdn.net/qq_41076797/article/details/83214081
+        https://blog.csdn.net/hufiveeee/article/details/79751876
+        https://blog.csdn.net/slaidas/article/details/78529507
+        https://blog.csdn.net/xielinrui123/article/details/81143519-->
 	</body>
-
 </html>

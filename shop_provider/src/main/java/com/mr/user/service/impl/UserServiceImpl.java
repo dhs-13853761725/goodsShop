@@ -7,17 +7,18 @@ import com.mr.pojo.User;
 import com.mr.user.mapper.UserMapper;
 import com.mr.user.service.UserService;
 import com.mr.utils.Page;
+import com.mr.utils.ResultVo;
 import com.mr.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by shun on 2019/5/6.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserMapper userMapper;
@@ -33,4 +34,7 @@ public class UserServiceImpl implements UserService {
         PageInfo<User> pageInfo = new PageInfo<User>(users);
         return pageInfo;
     }
+
+
+
 }
