@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 /**
  * Created by shun on 2019/4/29.
  */
@@ -34,6 +36,16 @@ public class UserController {
             return 2;
         }
 
+    }
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    @RequestMapping("/saveUser")
+    public Map<String,String> saveUser(User user){
+        Map<String,String> uu=userService.saveUser(user);
+        return uu;
     }
 
 }

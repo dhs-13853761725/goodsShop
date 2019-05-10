@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 /**
  * Created by shun on 2019/4/29.
  */
@@ -44,4 +46,14 @@ public class UserController {
         return i;
     }
 
+    /**
+     * 注册
+     * @param user
+     */
+    @RequestMapping("saveUserr")
+    @ResponseBody
+    public Map saveUserr(@RequestBody User user){
+        Map<String,String> iu=userService.saveUserr(user);
+        return iu;
+    }
 }

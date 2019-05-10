@@ -16,4 +16,6 @@ public interface UserMapper {
     User queryUserId(@Param("userId") Integer userId);
 
     int updateUser(User user);
+
+    void saveUserr(User user);
 }

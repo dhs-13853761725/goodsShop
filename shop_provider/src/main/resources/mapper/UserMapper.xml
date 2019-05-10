@@ -24,6 +24,9 @@
         SELECT * from t_user where user_id = #{userId}
     </select>
 
+    <insert id="saveUserr" parameterType="com.mr.pojo.User">
+        INSERT INTO t_user (user_phone,user_pass) VALUES (#{userPhone},#{userPass});
+    </insert>
     <update id="updateUser" parameterType="com.mr.pojo.User">
         UPDATE t_user SET `user_nickname`=#{userNickname}, `user_name`=#{userName}, `user_sex`=#{userSex}, `user_phone`=#{userPhone}, `user_email`=#{userEmail} WHERE (`user_id`=#{userId});
     </update>
