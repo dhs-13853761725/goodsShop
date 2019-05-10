@@ -26,29 +26,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-/*
-    @RequestMapping("")
-    public String saveUser(){
 
-    }*/
-    /**
-     * 跳转页面
-     * @return
-     */
-    @RequestMapping("tiao")
-    public ModelAndView tiao(){
-        ModelAndView mk=new ModelAndView();
-        mk.setViewName("user/register");
-        return mk;
-    }
-    /**
-     * 跳转页面
-     * @return
-     */
-    @RequestMapping("deng")
-    public ModelAndView deng(){
-        ModelAndView mk=new ModelAndView();
-        mk.setViewName("user/login");
-        return mk;
-    }
+
+
 }

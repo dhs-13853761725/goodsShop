@@ -14,5 +14,4 @@ import java.util.Map;
 public interface UserService {
     PageInfo<User> queryUserList(Page page);
 
-
 }

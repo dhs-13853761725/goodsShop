@@ -18,8 +18,5 @@ import java.util.Map;
 @FeignClient("PROVIDER-SHOP")
 public interface UserService {
 
-    @RequestMapping(value = "/queryComName",method = RequestMethod.GET)
-    List queryComName(@RequestParam("comName") String comName);
-
 
 }
